@@ -12,7 +12,7 @@ name = "Ontario"
 info = ["Location: Canada", "Volume: 100000"]
 
 products = []
-products.append(Product("Bekant", 50, 2))
+products.append(Product("Bekant", 50, 3))
 products.append(Product("Micke", 25, 10))
 products.append(Product("Alex", 100, 2))
 products.append(Product("Skarsta", 150, 5))

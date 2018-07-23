@@ -2,6 +2,8 @@
 
 Tietokantasovellus-harjoitustyö 2018-kesä-2. Aihe: Varastonhallinta.
 
+[Heroku](https://tsoha-warehouse.herokuapp.com/)
+
 ## Kuvaus
 
 Aiheeni on varastonhallinta-tietokantasovellus, jonka avulla käyttäjä voi tarkastella eri varastojen tilannetta. Varastojen ylläpitäjä voi antaa käyttäjille oikeuksia tarkastella ja muokata varastojen sisältöä ja täyttötilannetta. 

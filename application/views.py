@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 app = Flask(__name__)
+from application import app
 
 class Product:
     def __init__(self, name, volume, amount):

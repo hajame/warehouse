@@ -3,6 +3,9 @@
 Tietokantasovellus-harjoitustyö 2018-kesä-2. Aihe: Varastonhallinta.
 
 [Heroku](https://tsoha-warehouse.herokuapp.com/)
+[Tietokantakaavio](https://github.com/hajame/warehouse/blob/master/documentation/WarehouseManagementDB.png)
+[Käyttäjätarinat (User stories)](https://github.com/hajame/warehouse/blob/master/documentation/user_stories.md)
+
 
 ## Kuvaus
 
@@ -17,4 +20,5 @@ Aiheeni on varastonhallinta-tietokantasovellus, jonka avulla käyttäjä voi tar
 	- Jos jokin tuote vie enemmän tilaa kuin varastossa on kapasiteettia jäljellä, ei tuotetta lisätä.
 - Tuotteen poistamien
 - Varaston poistaminen
+
 

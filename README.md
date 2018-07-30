@@ -14,7 +14,8 @@ Aiheeni on varastonhallinta-tietokantasovellus, jonka avulla käyttäjä voi tar
 ### Toimintoja:
 - Kirjautuminen
 - Eri varastojen tilanteen ja tuotteiden tarkastelu
-	- Tuotteen varastotilanteen listaaminen (tuotteen kappalemäärät kussakin varastossa) [yhteenvetokysely]
+	- Tuotteen varastotilanteen listaaminen (tuotteen kappalemäärät kussakin varastossa)
+	- Missä varastossa on kyseistä tuotetta eniten/vähiten [yhteenvetokysely]
 - Varaston lisääminen
 - Varaston käyttäjäoikeuksien myöntäminen
 - Tuotteen lisääminen

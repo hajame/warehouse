@@ -1,2 +1,3 @@
 venv
 warehouses.db
+__pycache__

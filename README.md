@@ -2,9 +2,9 @@
 
 Tietokantasovellus-harjoitustyö 2018-kesä-2. Aihe: Varastonhallinta.
 
-[Heroku](https://tsoha-warehouse.herokuapp.com/)
-[Tietokantakaavio](https://github.com/hajame/warehouse/blob/master/documentation/WarehouseManagementDB.png)
-[Käyttäjätarinat (User stories)](https://github.com/hajame/warehouse/blob/master/documentation/user_stories.md)
+[Heroku](https://tsoha-warehouse.herokuapp.com/)  
+[Tietokantakaavio](https://github.com/hajame/warehouse/blob/master/documentation/WarehouseManagementDB.png)  
+[Käyttäjätarinat (User stories)](https://github.com/hajame/warehouse/blob/master/documentation/user_stories.md)  
 
 
 ## Kuvaus

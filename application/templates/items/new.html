@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+  
+{% block body %}
+<h1>Add item</h1>
+
+<form method="POST" action="{{ url_for('items_create') }}">
+    <table style="width:100%">
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name"/></td>
+        </tr>
+        <tr>
+          <td>Volume:</td>
+          <td><input type="text" name="volume"/></td>
+        </tr>
+        <tr>
+          <td>Amount:</td>
+          <td><input type="text" name="amount"/></td>
+        </tr>
+      </table> 
+  <input type="submit" value="Add a new item"/>
+</form>
+
+{% endblock %}

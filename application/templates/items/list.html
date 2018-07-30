@@ -18,7 +18,12 @@
       <td>{{ item.amount }}</td>
       <td>
           <form method="POST" action="{{ url_for('items_take_one', item_id=item.id) }}">
-              <input type="submit" value=" -1 "/>
+              <input type="submit" value=" - "/>
+          </form>
+      </td>
+      <td>
+          <form method="POST" action="{{ url_for('items_add_one', item_id=item.id) }}">
+              <input type="submit" value=" + "/>
           </form>
       </td>
     </tr>

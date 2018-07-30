@@ -12,19 +12,13 @@ name = "Ontario"
 
 info = ["Location: Canada", "Volume: 100000"]
 
-items = []
-items.append(Item("Bekant", 50, 3))
-items.append(Item("Micke", 25, 10))
-items.append(Item("Alex", 100, 2))
-items.append(Item("Skarsta", 150, 5))
-  
 @app.route("/")
 def hello():
     return render_template("index.html")
 
 @app.route("/warehouse")
 def content():
-    return render_template("warehouse.html", name=name, info=info, items=items)
+    return render_template("warehouse.html", name=name, info=info)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -13,5 +13,5 @@ Käyttäjänä...
 4. Haluan saada tiedon tietyn tuotteen varastotilanteesta.
     - Haku listaa varastot ja tuotteen kappalemäärät.
         - `SELECT Warehouse.name, WarehouseItem.amount FROM User, WarehouseUser, Warehouse, WarehouseItem, Item WHERE User.id = WarehouseUser.user_id AND WarehouseUser.warehouse_id = Warehouse.id AND Warehouse.id = WarehouseItem.warehouse_id AND Item.id = WarehouseItem.item_id AND Item.name = 'Flower pot' ;`
-    - Haku listaa, missä varastossa on eniten/vähiten kyseistä tuotetta.
+    - Haku listaa, missä varastossa on eniten kyseistä tuotetta.
         - `SELECT MAX(WarehouseItem.amount) FROM User, WarehouseUser, Warehouse, WarehouseItem, Item WHERE User.id = WarehouseUser.user_id AND WarehouseUser.warehouse_id = Warehouse.id AND Warehouse.id = WarehouseItem.warehouse_id AND Item.id = WarehouseItem.item_id AND Item.name = 'Flower pot' ;`

@@ -1,24 +1,55 @@
-{% extends "layout.html" %}
-  
-{% block body %}
+{% extends "layout.html" %} {% block body %}
 <h1>Add item</h1>
 
 <form method="POST" action="{{ url_for('items_create') }}">
-    <table style="width:100%">
-        <tr>
-            <td>Name:</td>
-            <td><input type="text" name="name"/></td>
-        </tr>
-        <tr>
-          <td>Volume:</td>
-          <td><input type="text" name="volume"/></td>
-        </tr>
-        <tr>
-          <td>Amount:</td>
-          <td><input type="text" name="amount"/></td>
-        </tr>
-      </table> 
-  <input type="submit" value="Add a new item"/>
+  <table style="width:100%">
+    <tr>
+      <td>
+        {{ form.name.label }}
+      </td>
+      <td>
+        {{ form.name }}
+      </td>
+      <td>
+          <ul>
+            {% for error in form.name.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </td>      
+    </tr>
+    <tr>
+      <td>
+        {{ form.volume.label }}
+      </td>
+      <td>
+          {{ form.volume }}
+      </td>
+      <td>
+          <ul>
+            {% for error in form.volume.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </td>      
+    </tr>
+    <tr>
+      <td>
+          {{ form.amount.label }}
+      </td>
+      <td>
+          {{ form.amount }}
+      </td>
+      <td>
+          <ul>
+            {% for error in form.amount.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </td>      
+    </tr>
+  </table>
+  <input type="submit" value="Add a new item" />
 </form>
 
 {% endblock %}

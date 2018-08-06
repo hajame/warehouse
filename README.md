@@ -8,7 +8,7 @@ Tietokantasovellus-harjoitustyö 2018-kesä-2. Aihe: Varastonhallinta.
 
 ```Testikäyttäjätunnus (username, password):
 test
-pass```  
+pass ```  
 
 ## Kuvaus
 

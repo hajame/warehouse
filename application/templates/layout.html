@@ -8,9 +8,18 @@
 
 <body>
 
-  <div><a href="/">Home</a> | 
-    <a href="/warehouse">Warehouse</a> | 
-    <a href="{{ url_for('items_index') }}">List items</a> | 
+  {% if current_user.is_authenticated %}
+  <p>
+    Logged in as {{ current_user.name }}. <a href="{{ url_for('auth_logout') }}">Log out</a>
+  </p>
+  {% else %}
+  <a href="{{ url_for('auth_login') }}">Log in</a>
+  {% endif %}
+
+  <div>
+    <a href="/">Home</a> |
+    <a href="/warehouse">Warehouse</a> |
+    <a href="{{ url_for('items_index') }}">List items</a> |
     <a href="{{ url_for('items_form') }}">Add an item</a>
   </div>
 

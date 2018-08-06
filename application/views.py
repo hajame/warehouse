@@ -13,7 +13,7 @@ name = "Ontario"
 info = ["Location: Canada", "Volume: 100000"]
 
 @app.route("/")
-def hello():
+def index():
     return render_template("index.html")
 
 @app.route("/warehouse")

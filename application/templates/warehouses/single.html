@@ -14,6 +14,8 @@
     <tr>
       <td>{{ warehouse.name }}</td>
       <td>{{ warehouse.volume }}</td>
+      <td><a href="{{ url_for('warehouses_edit', warehouse_id=warehouse.id) }}">Edit</a></td>
+      <td><a href="{{ url_for('warehouses_delete', warehouse_id=warehouse.id) }}">Delete</a></td>
     </tr>
   </table>
 {% endblock %}

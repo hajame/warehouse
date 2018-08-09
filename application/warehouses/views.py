@@ -18,10 +18,40 @@ def warehouses_form():
     return render_template("warehouses/new.html", form=WarehouseForm())
 
 
+@app.route("/warehouses/<warehouse_id>/single/edit", methods=["GET", "POST"])
+@login_required
+def warehouses_edit(warehouse_id):
+
+    if request.method == "GET":
+        return render_template("warehouses/edit.html", form=WarehouseForm(), warehouse_id=warehouse_id)
+
+    form = WarehouseForm(request.form)
+    wh = Warehouse.query.get(warehouse_id)
+
+    if not form.validate():
+        return render_template("warehouses/edit.html", warehouse_id=warehouse_id, form = form)
+
+    wh.name = form.name.data
+    wh.volume = form.volume.data
+    
+    db.session().commit()
+
+    return redirect(url_for("warehouse_single", warehouse_id=warehouse_id))
+
+@app.route("/warehouses/<warehouse_id>/single/delete", methods=["GET"])
+@login_required
+def warehouses_delete(warehouse_id):
+
+    db.session.delete(Warehouse.query.get(warehouse_id))
+    db.session().commit()
+
+    return render_template("warehouses/list.html", warehouses=Warehouse.query.all())
+
+
+
 @app.route("/warehouses/<warehouse_id>/single", methods=["GET"])
 @login_required
 def warehouse_single(warehouse_id):
-
     return render_template("warehouses/single.html", warehouse=Warehouse.query.get(warehouse_id))
 
 

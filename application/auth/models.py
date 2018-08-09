@@ -13,6 +13,8 @@ class User(db.Model):
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
 
+    warehouses = db.relationship("Warehouse", backref='account', lazy=True)
+
     def __init__(self, name, username, password):
         self.name = name
         self.username = username

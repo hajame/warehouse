@@ -1,6 +1,6 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from application.warehouses.models import Warehouse
 from application.warehouses.forms import WarehouseForm
@@ -34,6 +34,8 @@ def warehouses_create():
         return render_template("warehouses/new.html", form = form)
 
     warehouse = Warehouse(form.name.data, form.volume.data)
+    warehouse.account_id = current_user.id
+    
     db.session().add(warehouse)
     db.session().commit()
 

@@ -29,14 +29,15 @@ def warehouses_edit(warehouse_id):
     wh = Warehouse.query.get(warehouse_id)
 
     if not form.validate():
-        return render_template("warehouses/edit.html", warehouse_id=warehouse_id, form = form)
+        return render_template("warehouses/edit.html", warehouse_id=warehouse_id, form=form)
 
     wh.name = form.name.data
     wh.volume = form.volume.data
-    
+
     db.session().commit()
 
     return redirect(url_for("warehouse_single", warehouse_id=warehouse_id))
+
 
 @app.route("/warehouses/<warehouse_id>/single/delete", methods=["GET"])
 @login_required
@@ -46,7 +47,6 @@ def warehouses_delete(warehouse_id):
     db.session().commit()
 
     return render_template("warehouses/list.html", warehouses=Warehouse.query.all())
-
 
 
 @app.route("/warehouses/<warehouse_id>/single", methods=["GET"])
@@ -61,11 +61,11 @@ def warehouses_create():
     form = WarehouseForm(request.form)
 
     if not form.validate():
-        return render_template("warehouses/new.html", form = form)
+        return render_template("warehouses/new.html", form=form)
 
     warehouse = Warehouse(form.name.data, form.volume.data)
     warehouse.account_id = current_user.id
-    
+
     db.session().add(warehouse)
     db.session().commit()
 

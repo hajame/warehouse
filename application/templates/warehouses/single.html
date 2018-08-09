@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1>Warehouse details</h1>
+
+<h2>{{ warehouse.name }}</h2>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Volume</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td>{{ warehouse.name }}</td>
+      <td>{{ warehouse.volume }}</td>
+    </tr>
+  </table>
+{% endblock %}

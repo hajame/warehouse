@@ -1,21 +1,31 @@
-{% extends "layout.html" %}
-
-{% block body %}
+{% extends "layout.html" %} {% block body %}
 <h1>Warehouse details</h1>
 
 <h2>{{ warehouse.name }}</h2>
 
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Volume</th>
-      <th></th>
-    </tr>
-    <tr>
-      <td>{{ warehouse.name }}</td>
-      <td>{{ warehouse.volume }}</td>
-      <td><a href="{{ url_for('warehouses_edit', warehouse_id=warehouse.id) }}">Edit</a></td>
-      <td><a href="{{ url_for('warehouses_delete', warehouse_id=warehouse.id) }}">Delete</a></td>
-    </tr>
-  </table>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Volume</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>{{ warehouse.name }}</td>
+    <td>{{ warehouse.volume }}</td>
+    <td>
+      <!-- <a href="{{ url_for('warehouses_edit', warehouse_id=warehouse.id) }}">Edit</a> -->
+
+      <form method="GET" action="{{ url_for('warehouses_edit', warehouse_id=warehouse.id) }}">
+        <input type="submit" value=" edit " />
+      </form>
+    </td>
+    <td>
+      <!-- <a href="{{ url_for('warehouses_delete', warehouse_id=warehouse.id) }}">Delete</a> -->
+
+      <form method="GET" action="{{ url_for('warehouses_delete', warehouse_id=warehouse.id) }}">
+          <input type="submit" value=" delete " />
+      </form>
+    </td>
+  </tr>
+</table>
 {% endblock %}

@@ -68,7 +68,7 @@ def warehouses_create():
         return render_template("warehouses/new.html", form=form)
 
     warehouse = Warehouse(form.name.data, form.volume.data)
-    warehouse.account_id = current_user.id
+    warehouse.users.append(current_user)
 
     db.session().add(warehouse)
     db.session().commit()

@@ -23,7 +23,11 @@ def warehouses_form():
 def warehouses_edit(warehouse_id):
 
     if request.method == "GET":
-        return render_template("warehouses/edit.html", form=WarehouseForm(), warehouse_id=warehouse_id)
+
+        wh = Warehouse.query.get(warehouse_id)
+        form = WarehouseForm(obj=wh)
+
+        return render_template("warehouses/edit.html", form=form, warehouse_id=warehouse_id)
 
     form = WarehouseForm(request.form)
     wh = Warehouse.query.get(warehouse_id)

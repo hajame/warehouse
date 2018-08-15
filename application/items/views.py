@@ -3,6 +3,7 @@ from flask import redirect, render_template, request, url_for
 from flask_login import login_required
 
 from application.items.models import Item
+from application.warehouses.models import Warehouse
 from application.items.forms import ItemForm
 
 
@@ -50,6 +51,8 @@ def items_create():
         return render_template("items/new.html", form = form)
 
     item = Item(form.name.data, form.volume.data, form.amount.data)
+    item.warehouses.append(Warehouse.query.get(1))
+
     db.session().add(item)
     db.session().commit()
 

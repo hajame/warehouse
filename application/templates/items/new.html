@@ -46,7 +46,22 @@
             <li>{{ error }}</li>
             {% endfor %}
           </ul>
-        </td>      
+      </td>      
+    </tr>
+    <tr>
+      <td>
+          {{ form.warehouse.label }}
+      </td>
+      <td>
+          {{ form.warehouse }}
+      </td>
+      <td>
+          <ul>
+            {% for error in form.warehouse.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+      </td>      
     </tr>
   </table>
   <input type="submit" value="Add a new item" />

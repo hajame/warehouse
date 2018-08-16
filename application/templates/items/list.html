@@ -11,18 +11,18 @@
       <th>Volume</th>
       <th>Amount</th>
     </tr>
-    {% for item in items %}
+    {% for warehouse_item in warehouse_items %}
     <tr>
-      <td>{{ item.name }}</td>
-      <td>{{ item.volume }}</td>
-      <td>{{ item.amount }}</td>
+      <td>{{ warehouse_item.item.name }}</td>
+      <td>{{ warehouse_item.item.volume }}</td>
+      <td>{{ warehouse_item.amount }}</td>
       <td>
-          <form method="POST" action="{{ url_for('items_take_one', item_id=item.id) }}">
+          <form method="POST" action="{{ url_for('items_take_one', item_id=warehouse_item.id) }}">
               <input type="submit" value=" - "/>
           </form>
       </td>
       <td>
-          <form method="POST" action="{{ url_for('items_add_one', item_id=item.id) }}">
+          <form method="POST" action="{{ url_for('items_add_one', item_id=warehouse_item.id) }}">
               <input type="submit" value=" + "/>
           </form>
       </td>

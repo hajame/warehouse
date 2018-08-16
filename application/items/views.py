@@ -3,15 +3,14 @@ from flask import redirect, render_template, request, url_for
 from flask_login import login_required
 
 from application.items.models import Item
-from application.warehouses.models import Warehouse
+from application.warehouses.models import Warehouse, Warehouse_item
 from application.items.forms import ItemForm
 
 
 @app.route("/items/", methods=["GET"])
 @login_required
 def items_index():
-    return render_template("items/list.html", items=Item.query.all())
-
+    return render_template("items/list.html", warehouse_items=Warehouse_item.query.all())
 
 @app.route("/items/new/")
 @login_required
@@ -19,27 +18,27 @@ def items_form():
     return render_template("items/new.html", form=ItemForm())
 
 
-@app.route("/items/<item_id>/", methods=["POST"])
-@login_required
-def items_take_one(item_id):
+# @app.route("/items/<item_id>/", methods=["POST"])
+# @login_required
+# def items_take_one(item_id):
 
-    t = Item.query.get(item_id)
-    if t.amount > 0:
-        t.amount = t.amount - 1
-    db.session().commit()
+#     t = Item.query.get(item_id)
+#     if t.amount > 0:
+#         t.amount = t.amount - 1
+#     db.session().commit()
 
-    return redirect(url_for("items_index"))
+#     return redirect(url_for("items_index"))
 
 
-@app.route("/items/<item_id>+/", methods=["POST"])
-@login_required
-def items_add_one(item_id):
+# @app.route("/items/<item_id>+/", methods=["POST"])
+# @login_required
+# def items_add_one(item_id):
 
-    t = Item.query.get(item_id)
-    t.amount = t.amount + 1
-    db.session().commit()
+#     t = Item.query.get(item_id)
+#     t.amount = t.amount + 1
+#     db.session().commit()
 
-    return redirect(url_for("items_index"))
+#     return redirect(url_for("items_index"))
 
 
 @app.route("/items", methods=["POST"])
@@ -50,10 +49,16 @@ def items_create():
     if not form.validate():
         return render_template("items/new.html", form = form)
 
-    item = Item(form.name.data, form.volume.data, form.amount.data)
-    item.warehouses.append(Warehouse.query.get(1))
+    item = Item(form.name.data, form.volume.data)
 
+    warehouse = Warehouse.query.filter_by(name=form.warehouse.data).first()
+    
     db.session().add(item)
     db.session().commit()
 
-    return redirect(url_for("items_index"))
+    relation = Warehouse_item(warehouse, item, form.amount.data)
+    
+    db.session().add(relation)
+    db.session().commit()
+
+    return redirect(url_for("warehouse_single", warehouse_id = warehouse.id))

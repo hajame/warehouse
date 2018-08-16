@@ -1,20 +1,12 @@
 from flask import Flask, render_template
 app = Flask(__name__)
 from application import app
-
-class Item:
-    def __init__(self, name, volume, amount):
-        self.name = name
-        self.volume = volume
-        self.amount = amount
-
-name = "Ontario"
-
-info = ["Location: Canada", "Volume: 100000"]
+from application.warehouses.models import Warehouse
+from application.items.models import Item
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", warehouse_count=Warehouse.count_warehouses(), item_count=Item.count_items())
 
 @app.route("/warehouse")
 def content():

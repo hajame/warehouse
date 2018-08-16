@@ -1,7 +1,41 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<p>
-  Welcome to Warehouse Manager!
-</p>
+
+<h1>Warehouse Manager</h1>
+
+<table>
+
+  {% if warehouse_count is defined %}
+  <tr>
+    <td style="width: 13em">
+      Warehouse total:
+    </td>
+    
+    {% for count in warehouse_count %}
+    <td>
+      <b>{{ count.count }}</b>
+    </td>
+    {% endfor %}
+    
+  </tr>
+  {% endif %}
+
+  {% if item_count is defined %}
+  <tr>
+    <td style="width: 13em">
+      Item total:
+    </td>
+    
+    {% for count in item_count %}
+    <td>
+        <b>{{ count.count }}</b>
+    </td>
+    {% endfor %}
+
+  </tr>
+  {% endif %}
+
+</table>
+
 {% endblock %}

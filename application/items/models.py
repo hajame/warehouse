@@ -1,12 +1,30 @@
 from application import db
+from application.warehouses import models
+from sqlalchemy.sql import text
 
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), nullable=False)
+    name = db.Column(db.String(64), nullable=False)
     volume = db.Column(db.Integer)
-    amount = db.Column(db.Integer)
 
-    def __init__(self, name, volume, amount):
+    warehouse_items = db.relationship('Warehouse_item', lazy=True)
+
+    # warehouses = db.relationship("Warehouse", lazy=True)
+
+    def __init__(self, name, volume):
         self.name = name
         self.volume = volume
-        self.amount = amount
+
+    @staticmethod
+    def count_items():
+        stmt = text("SELECT COUNT(item.id) FROM item")
+        res = db.engine.execute(stmt)
+
+        response = []
+        for row in res:
+            response.append({"count": row[0]})
+
+        return response
+
+    def __repr__(self):
+        return '{} - {} - {}'.format(self.id, self.name, self.volume)

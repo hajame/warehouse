@@ -2,8 +2,10 @@ from application import app, db
 from flask import redirect, render_template, request, url_for
 from flask_login import login_required, current_user
 
-from application.warehouses.models import Warehouse
+from application.warehouses.models import Warehouse, Warehouse_item
 from application.warehouses.forms import WarehouseForm
+from application.items.models import Item
+from application.items.forms import ItemForm
 
 
 @app.route("/warehouses/", methods=["GET"])
@@ -56,7 +58,9 @@ def warehouses_delete(warehouse_id):
 @app.route("/warehouses/<warehouse_id>/single", methods=["GET"])
 @login_required
 def warehouse_single(warehouse_id):
-    return render_template("warehouses/single.html", warehouse=Warehouse.query.get(warehouse_id))
+    form = ItemForm(request.form)
+
+    return render_template("warehouses/single.html", warehouse=Warehouse.query.get(warehouse_id), form = form)
 
 
 @app.route("/warehouses", methods=["POST"])
@@ -74,3 +78,37 @@ def warehouses_create():
     db.session().commit()
 
     return redirect(url_for("warehouses_index"))
+
+@app.route("/warehouses/<warehouse_id>/single/<item_id>/", methods=["POST"])
+@login_required
+def items_take_one(item_id, warehouse_id):
+
+    t = Warehouse_item.query.filter_by(item_id=item_id, warehouse_id=warehouse_id).first()
+    if t.amount > 0:
+        t.amount = t.amount - 1
+    db.session().commit()
+
+    return redirect(url_for("warehouse_single", warehouse_id = warehouse_id))
+
+
+@app.route("/warehouses/<warehouse_id>/single/<item_id>+/", methods=["POST"])
+@login_required
+def items_add_one(item_id, warehouse_id):
+
+    t = Warehouse_item.query.filter_by(item_id=item_id, warehouse_id=warehouse_id).first()
+    if t.amount < 2147483647:
+        t.amount = t.amount + 1
+    db.session().commit()
+
+    return redirect(url_for("warehouse_single", warehouse_id = warehouse_id))
+
+
+@app.route("/warehouses/<warehouse_id>/single/<item_id>/delete", methods=["GET"])
+@login_required
+def warehouse_item_delete(item_id, warehouse_id):
+
+    t = Warehouse_item.query.filter_by(item_id=item_id, warehouse_id=warehouse_id).first()
+    db.session.delete(t)
+    db.session().commit()
+
+    return redirect(url_for("warehouse_single", warehouse_id = warehouse_id))

@@ -11,7 +11,7 @@ from application.items.forms import ItemForm
 @app.route("/warehouses/", methods=["GET"])
 @login_required
 def warehouses_index():
-    return render_template("warehouses/list.html", warehouses=Warehouse.query.all())
+    return render_template("warehouses/list.html", warehouses=current_user.warehouses)
 
 
 @app.route("/warehouses/new/")
@@ -52,7 +52,7 @@ def warehouses_delete(warehouse_id):
     db.session.delete(Warehouse.query.get(warehouse_id))
     db.session().commit()
 
-    return render_template("warehouses/list.html", warehouses=Warehouse.query.all())
+    return render_template("warehouses/list.html", warehouses=current_user.warehouses)
 
 
 @app.route("/warehouses/<warehouse_id>/single", methods=["GET"])

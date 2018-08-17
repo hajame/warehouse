@@ -20,7 +20,7 @@ class Warehouse(db.Model):
     users = db.relationship('User', secondary=users, lazy='subquery',
                             backref=db.backref('warehouses', lazy=True))
     
-    warehouse_items = db.relationship('Warehouse_item', lazy=True)
+    warehouse_items = db.relationship('Warehouse_item', cascade='delete', lazy=True)
 
     # items = db.relationship('Item', lazy=True)
 

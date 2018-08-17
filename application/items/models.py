@@ -9,8 +9,6 @@ class Item(db.Model):
 
     warehouse_items = db.relationship('Warehouse_item', lazy=True)
 
-    # warehouses = db.relationship("Warehouse", lazy=True)
-
     def __init__(self, name, volume):
         self.name = name
         self.volume = volume

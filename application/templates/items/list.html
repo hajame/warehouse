@@ -9,24 +9,58 @@
     <tr>
       <th>Item</th>
       <th>Volume</th>
-      <th>Amount</th>
     </tr>
-    {% for warehouse_item in warehouse_items %}
+    {% for item in items %}
     <tr>
-      <td>{{ warehouse_item.item.name }}</td>
-      <td>{{ warehouse_item.item.volume }}</td>
-      <td>{{ warehouse_item.amount }}</td>
-      <td>
-          <form method="POST" action="{{ url_for('items_take_one', item_id=warehouse_item.id) }}">
-              <input type="submit" value=" - "/>
-          </form>
-      </td>
-      <td>
-          <form method="POST" action="{{ url_for('items_add_one', item_id=warehouse_item.id) }}">
-              <input type="submit" value=" + "/>
-          </form>
-      </td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.volume }}</td>
     </tr>
     {% endfor %}
   </table>
+  <p></p>
+
+  <form method="POST" action="{{ url_for('items_search') }}">
+    <table style="width:100%">
+      <tr>
+        <td>
+          Search for warehouses containing item:
+        </td>
+        <td>
+          {{ form.name.label }}
+        </td>
+        <td>
+          {{ form.name }}
+        </td>
+        <td>
+            <ul>
+              {% for error in form.name.errors %}
+              <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          </td>      
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+          <input type="submit" value=" search " />
+        </td>
+      </tr>
+      <tr>
+        <th>Warehouse</th>
+        <th></th>
+      </tr>
+      {% for warehouse in warehouses %}
+      <tr>
+        <td>{{ warehouse.name }}</td>
+        <td>
+            <form method="GET" action="{{ url_for('warehouse_single', warehouse_id=warehouse.id) }}">
+                <input type="submit" value=" view "/>
+            </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </form>
+
 {% endblock %}

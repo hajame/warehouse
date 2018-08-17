@@ -12,3 +12,9 @@ class ItemForm(FlaskForm):
  
     class Meta:
         csrf = False
+
+class SearchForm(FlaskForm):
+    name = StringField("Name:", [validators.Length(min=2, max=64, message="Name must be between 2-64 characters.")])
+    
+    class Meta:
+        csrf = False

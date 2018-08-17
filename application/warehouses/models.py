@@ -11,7 +11,6 @@ users = db.Table('account_warehouse',
                            db.ForeignKey('warehouse.id'), primary_key=True)
                  )
 
-
 class Warehouse(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(32), nullable=False)
@@ -22,18 +21,16 @@ class Warehouse(db.Model):
     
     warehouse_items = db.relationship('Warehouse_item', cascade='delete', lazy=True)
 
-    # items = db.relationship('Item', lazy=True)
-
     def __init__(self, name, volume):
         self.name = name
         self.volume = volume
 
     @staticmethod
-    def find_warehouses_with_item():
+    def find_warehouses_with_item(item):
         stmt = text("SELECT DISTINCT warehouse.name "
                     "FROM warehouse, item, warehouse_item "
-                    "WHERE item.name LIKE '% IKEA %' "
-                    "AND item_id = warehouse_id AND warehouse_id = warehouse.id")
+                    "WHERE item.name LIKE '% :it %' "
+                    "AND item_id = warehouse_id AND warehouse_id = warehouse.id").params(it=item)
         res = db.engine.execute(stmt)
 
         response = []

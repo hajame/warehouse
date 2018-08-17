@@ -1,47 +1,53 @@
 from application import app, db
 from flask import redirect, render_template, request, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from application.items.models import Item
 from application.warehouses.models import Warehouse, Warehouse_item
-from application.items.forms import ItemForm
+from application.items.forms import ItemForm, SearchForm
+
+from sqlalchemy.sql import text
 
 
 @app.route("/items/", methods=["GET"])
 @login_required
 def items_index():
-    return render_template("items/list.html", warehouse_items=Warehouse_item.query.all())
+    return render_template("items/list.html", items=Item.query.all(), form=SearchForm(), warehouses=[])
+
 
 @app.route("/items/new/")
 @login_required
 def items_form():
     return render_template("items/new.html", form=ItemForm())
 
+@app.route("/items/", methods=["POST"])
+@login_required
+def items_search():
 
-# @app.route("/items/<item_id>/", methods=["POST"])
-# @login_required
-# def items_take_one(item_id):
+    form = SearchForm(request.form)
 
-#     t = Item.query.get(item_id)
-#     if t.amount > 0:
-#         t.amount = t.amount - 1
-#     db.session().commit()
+    if not form.validate():
+        return render_template("items/list.html", form = form)
 
-#     return redirect(url_for("items_index"))
+    item = Item.query.filter_by(name=form.name.data).first()
+    
+    stmt = text("SELECT DISTINCT warehouse.id "
+                "FROM warehouse, warehouse_item "
+                "WHERE warehouse.id = warehouse_item.warehouse_id "
+                "AND warehouse_item.item_id = :it ;").params(it=item.id)
+    res = db.engine.execute(stmt)
+    
+    warehouses = []
+
+    for row in res:
+        a = Warehouse.query.get(row[0])
+        warehouses.append(a)
+        print(a)
+
+    return render_template("items/list.html", items=Item.query.all(), form=SearchForm(), warehouses = warehouses)
 
 
-# @app.route("/items/<item_id>+/", methods=["POST"])
-# @login_required
-# def items_add_one(item_id):
-
-#     t = Item.query.get(item_id)
-#     t.amount = t.amount + 1
-#     db.session().commit()
-
-#     return redirect(url_for("items_index"))
-
-
-@app.route("/items", methods=["POST"])
+@app.route("/items/new", methods=["POST"])
 @login_required
 def items_create():
     form = ItemForm(request.form)

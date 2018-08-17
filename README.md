@@ -4,20 +4,32 @@ Tietokantasovellus-harjoitustyö 2018-kesä-2.
 
 Aihe: Varastonhallinta.  
 
-[Heroku](https://tsoha-warehouse.herokuapp.com/)  
-[Tietokantakaavio](https://github.com/hajame/warehouse/blob/master/documentation/WarehouseManagementDB.png)  
-[Käyttäjätarinat (User stories)](https://github.com/hajame/warehouse/blob/master/documentation/user_stories.md)  
-
-```
-Testikäyttäjätunnukset:
------------------------
-Username: test
-Password: pass
-```  
 
 ## Kuvaus
 
 Aiheeni on varastonhallinta-tietokantasovellus, jonka avulla käyttäjä voi tarkastella eri varastojen tilannetta. Käyttäjälle annetaan listaus hänen hallinnoimistaan varastoista. Käyttäjä voi tarkastella varastojen sisältöä ja tehdä hakuja eri tuotteisiin. Ylläpitäjän oikeiuksilla käyttäjä voi antaa toisille käyttäjille oikeuksia tarkastella ja muokata eri varastoja ja niiden sisältöä. 
+
+
+[Heroku](https://tsoha-warehouse.herokuapp.com/)  
+[Tietokantakaavio](https://github.com/hajame/warehouse/blob/master/documentation/WarehouseManagementDB.png)  
+[Käyttäjätarinat (User stories)](https://github.com/hajame/warehouse/blob/master/documentation/user_stories.md)  
+
+
+```
+Testikäyttäjätunnukset 
+-----------------------
+
+(käyttäjille näytetään erilaiset varastolistaukset)
+
+Username: test
+Password: pass
+
+----------------
+
+Username: hello
+Password: world
+
+```  
 
 ### Toimintoja:
 - Kirjautuminen ja uuden käyttäjän luominen

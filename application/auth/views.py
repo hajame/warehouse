@@ -2,7 +2,7 @@ from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
 
 from application import app, db
-from application.auth.models import User
+from application.auth.models import User, Role
 from application.auth.forms import LoginForm, UserForm
 
 
@@ -35,9 +35,11 @@ def auth_register():
         return render_template("auth/new_user.html", form = form)
 
     user = User(form.name.data, form.username.data, form.password.data)
+    user.role = Role.query.get(1)
     
     db.session().add(user)
     db.session().commit()
+
 
     return redirect(url_for("auth_login"))
 

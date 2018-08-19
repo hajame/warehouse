@@ -1,6 +1,6 @@
-from application import app, db
+from application import app, db, login_required, login_manager
 from flask import redirect, render_template, request, url_for
-from flask_login import login_required, current_user
+from flask_login import current_user
 
 from application.warehouses.models import Warehouse, Warehouse_item
 from application.warehouses.forms import WarehouseForm
@@ -9,19 +9,23 @@ from application.items.forms import ItemForm
 
 
 @app.route("/warehouses/", methods=["GET"])
-@login_required
+@login_required()
 def warehouses_index():
     return render_template("warehouses/list.html", warehouses=current_user.warehouses)
 
+@app.route("/warehouses/all", methods=["GET"])
+@login_required(role="ADMIN")
+def warehouses_all():
+    return render_template("warehouses/list.html", warehouses=Warehouse.query.all())
 
 @app.route("/warehouses/new/")
-@login_required
+@login_required()
 def warehouses_form():
     return render_template("warehouses/new.html", form=WarehouseForm())
 
 
 @app.route("/warehouses/<warehouse_id>/single/edit", methods=["GET", "POST"])
-@login_required
+@login_required()
 def warehouses_edit(warehouse_id):
 
     if request.method == "GET":
@@ -46,7 +50,7 @@ def warehouses_edit(warehouse_id):
 
 
 @app.route("/warehouses/<warehouse_id>/single/delete", methods=["GET"])
-@login_required
+@login_required()
 def warehouses_delete(warehouse_id):
 
     db.session.delete(Warehouse.query.get(warehouse_id))
@@ -56,7 +60,7 @@ def warehouses_delete(warehouse_id):
 
 
 @app.route("/warehouses/<warehouse_id>/single", methods=["GET"])
-@login_required
+@login_required()
 def warehouse_single(warehouse_id):
     form = ItemForm(request.form)
 
@@ -64,7 +68,7 @@ def warehouse_single(warehouse_id):
 
 
 @app.route("/warehouses", methods=["POST"])
-@login_required
+@login_required()
 def warehouses_create():
     form = WarehouseForm(request.form)
 
@@ -80,7 +84,7 @@ def warehouses_create():
     return redirect(url_for("warehouses_index"))
 
 @app.route("/warehouses/<warehouse_id>/single/<item_id>/", methods=["POST"])
-@login_required
+@login_required()
 def items_take_one(item_id, warehouse_id):
 
     t = Warehouse_item.query.filter_by(item_id=item_id, warehouse_id=warehouse_id).first()
@@ -92,7 +96,7 @@ def items_take_one(item_id, warehouse_id):
 
 
 @app.route("/warehouses/<warehouse_id>/single/<item_id>+/", methods=["POST"])
-@login_required
+@login_required()
 def items_add_one(item_id, warehouse_id):
 
     t = Warehouse_item.query.filter_by(item_id=item_id, warehouse_id=warehouse_id).first()
@@ -104,7 +108,7 @@ def items_add_one(item_id, warehouse_id):
 
 
 @app.route("/warehouses/<warehouse_id>/single/<item_id>/delete", methods=["GET"])
-@login_required
+@login_required()
 def warehouse_item_delete(item_id, warehouse_id):
 
     t = Warehouse_item.query.filter_by(item_id=item_id, warehouse_id=warehouse_id).first()

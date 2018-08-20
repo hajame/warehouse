@@ -8,7 +8,7 @@
 
   {% if warehouse_count is defined %}
   <tr>
-    <td style="width: 13em">
+    <td style="width: 12em">
       Warehouse total:
     </td>
     
@@ -23,7 +23,7 @@
 
   {% if item_count is defined %}
   <tr>
-    <td style="width: 13em">
+    <td style="width: 12em">
       Item total:
     </td>
     
@@ -37,5 +37,12 @@
   {% endif %}
 
 </table>
+
+{% if not current_user.is_authenticated %}
+  
+  <p style="font-size: 13pt; padding-top: 1cm"><b>Please log in or register</b></p>
+
+
+{% endif %}
 
 {% endblock %}

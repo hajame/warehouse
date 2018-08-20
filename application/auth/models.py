@@ -7,7 +7,7 @@ class User(Base):
     __tablename__ = "account"
 
     name = db.Column(db.String(32), nullable=False)
-    username = db.Column(db.String(32), nullable=False)
+    username = db.Column(db.String(32), nullable=False, unique=True)
     password = db.Column(db.String(32), nullable=False)
 
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=True)

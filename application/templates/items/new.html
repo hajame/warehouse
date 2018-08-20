@@ -60,6 +60,9 @@
             {% for error in form.warehouse.errors %}
             <li>{{ error }}</li>
             {% endfor %}
+            {% if warehouse_error  %}
+            <li>{{  warehouse_error  }}</li>
+            {% endif %}
           </ul>
       </td>      
     </tr>

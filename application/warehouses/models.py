@@ -13,7 +13,7 @@ users = db.Table('account_warehouse',
 
 class Warehouse(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(32), nullable=False)
+    name = db.Column(db.String(32), nullable=False, unique=True)
     volume = db.Column(db.Integer)
 
     users = db.relationship('User', secondary=users, lazy='subquery',

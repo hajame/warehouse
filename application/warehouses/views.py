@@ -21,7 +21,7 @@ def warehouses_all():
 @app.route("/warehouses/new/")
 @login_required()
 def warehouses_form():
-    return render_template("warehouses/new.html", form=WarehouseForm())
+    return render_template("warehouses/new.html", form=WarehouseForm(), warehouse_error="")
 
 
 @app.route("/warehouses/<warehouse_id>/single/edit", methods=["GET", "POST"])
@@ -73,7 +73,12 @@ def warehouses_create():
     form = WarehouseForm(request.form)
 
     if not form.validate():
-        return render_template("warehouses/new.html", form=form)
+        return render_template("warehouses/new.html", form=form, warehouse_error="")
+
+    warehouse = Warehouse.query.filter_by(name=form.name.data).first()
+
+    if warehouse:
+        return render_template("warehouses/new.html", form=form, warehouse_error="Warehouse already exists")
 
     warehouse = Warehouse(form.name.data, form.volume.data)
     warehouse.users.append(current_user)

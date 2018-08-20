@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 
 class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), nullable=False)
+    name = db.Column(db.String(64), nullable=False, unique=True)
     volume = db.Column(db.Integer)
 
     warehouse_items = db.relationship('Warehouse_item', lazy=True)

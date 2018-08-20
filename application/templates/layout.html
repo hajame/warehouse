@@ -15,33 +15,41 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="/warehouses/">Warehouses</a>
-        </li>
+        {% if current_user.is_authenticated %}
+          <li class="nav-item">
+              <a class="nav-link" href="/warehouses/">Warehouses</a>
+          </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('warehouses_form') }} ">Add a warehouse</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('warehouses_form') }} ">Add a warehouse</a>
+          </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('items_form') }} ">Add an item</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('items_form') }} ">Add an item</a>
+          </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('items_index') }}">List all items</a>
-        </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('items_index') }}">List all items</a>
+          </li>
+        {% endif %}    
       </ul>
       <div class="form-inline mt-2 mt-md-0">
-        {% if current_user.is_authenticated %}
-          <p style="color: wheat">
-            Logged in as {{ current_user.name }}. <a style="color: tomato" href="{{ url_for('auth_logout') }}">Log out</a>
-          </p>
+        
+        {% if current_user.is_authenticated %}  
+        
+          {% if current_user.role.name == 'ADMIN' %}        
+        <a class="nav-link" style="color: #ffffff" href="{{ url_for('warehouses_all') }}">All warehouses</a>         
+          {% endif %}  
+
+        <a class="nav-link"style="color: rgb(255, 255, 255,.5)">Logged in as {{ current_user.name }}</a>
+        <a class="nav-link" style="color: tomato" href="{{ url_for('auth_logout') }}">Log out</a>
+
         {% else %}
-        <p style="color: wheat">
-          <a href="{{ url_for('auth_login') }}">Log in</a>  or  <a href="{{ url_for('auth_register') }}">Register</a>
-        </p>
+          <p style="color: wheat">
+            <a href="{{ url_for('auth_login') }}">Log in</a>  or  <a href="{{ url_for('auth_register') }}">Register</a>
+          </p>
         {% endif %}
+
       </div>
     </div>
   </nav>

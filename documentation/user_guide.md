@@ -87,7 +87,7 @@ Sivu listaa jokaisen järjestelmään lisätyn tuotteen ja sen tilavuuden.
 
 ### All warehouses - listaa kaikki varastot
 
-Järjestelmänvalvojalla on oikeus tarkastella ja muokata kaikkia varastoja. Valitse navigaatiopalkista __All warehouses__ listataksesi kaikki varastot. Näkymää käytetään [Warehouses](../blob/master/documentation/user_guide.md#Warehouses) -näkymän tavoin.
+Järjestelmänvalvojalla on oikeus tarkastella ja muokata kaikkia varastoja. Valitse navigaatiopalkista __All warehouses__ listataksesi kaikki varastot. Näkymää käytetään [Warehouses](https://github.com/hajame/warehouse/blob/master/documentation/user_guide.md#warehouses) -näkymän tavoin.
 
 ## Uloskirjautuminen
 

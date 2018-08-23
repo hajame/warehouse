@@ -2,7 +2,7 @@
 
 Sovellusta voi käyttää paikallisesti osoitteessa <http://localhost:5000>, tai haluamassan web-hostauspalvelussa: sovellus pyörii tällä hetkellä esimerkiksi osoitteessa <http://tsoha-warehouse.herokuapp.com/>.
 
-# Kirjautuminen
+## Kirjautuminen
 
 Sovelluksen luoma sivusto on suojattu salasanalla, jotta ulkopuoliset eivät pääse sitä lukemaan. Sovellukseen on määritelty kaksi käyttäjätiliä, jotka ovat sovelluksen testikäytön kannalta olennaisia. Nämä tilit ovat:
 
@@ -16,7 +16,7 @@ Sovellukseen on mahdollista luoda uusia käyttäjiä. Kirjautuminen on helppoa, 
 
 Voit kirjautua ulos koska vaan valitsemalla __Log out__-linkin.
 
-# Rekisteröityminen
+## Rekisteröityminen
 
 Luo uusi käyttäjä painamalla linkkiä __Register__.
 
@@ -28,9 +28,7 @@ Kirjautuessasi sovellukseen sinut ohjataan etusivulle, jossa on listattuna varas
 
 Etusivulle pääsee palaamaan muista sovelluksen näkymisetä klikkaamalla navigaatiopalkin vasemmassa yläreunassa olevasta __Warehouse__ nimestä.
 
-### Käytä navigaatiolinkkejä siiryäksesi muihin näkymiin
-
-# Warehouses 
+## Warehouses 
 
 - __varastojen tarkastelu__
     - __Warehouses__ linkistä näet ne varastot, joihin käyttäjälläsi on käyttöoikeudet.
@@ -45,7 +43,7 @@ Etusivulle pääsee palaamaan muista sovelluksen näkymisetä klikkaamalla navig
     - poista tuote varastosta valitsemalla __delete__ tuotteen vierestä
 
 
-# Add a warehouse - varaston lisääminen
+## Add a warehouse - varaston lisääminen
 
 Anna varastolle uniikki __nimi__ ja __tilavuus__ väliltä 0-2147483647. Tilavuuden yksikkö on käyttäjän pään sisällä. Valitse __Add a new warehouse__ lisätäksesi varaston.
 
@@ -69,7 +67,9 @@ On suositeltavaa lisätä eri kokoisten pakkausten pakkauskoot suoraan tuotteen 
 | 'Vehnäjauho (10kg)'   | 10     |
 
 
-# List all items - listaa tuotteet ja hae tuotteen nimellä
+## List all items 
+
+- listaa tuotteet ja hae tuotteen nimellä  
 
 Sivu listaa jokaisen järjestelmään lisätyn tuotteen ja sen tilavuuden.  
 
@@ -81,6 +81,6 @@ Sivu listaa jokaisen järjestelmään lisätyn tuotteen ja sen tilavuuden.
 
 Järjestelmänvalvojalla on oikeus tarkastella ja muokata kaikkia varastoja. Valitse navigaatiopalkista __All warehouses__ listataksesi kaikki varastot. Näkymää käytetään [Warehouses](../blob/master/documentation/user_guide.md#Warehouses) -näkymän tavoin.
 
-# Uloskirjautuminen
+## Uloskirjautuminen
 
 Voit kirjautua ulos koska vaan valitsemalla __Log out__-linkin.

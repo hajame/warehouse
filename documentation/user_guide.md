@@ -4,13 +4,13 @@ Sovellusta voi käyttää paikallisesti osoitteessa <http://localhost:5000>, tai
 
 ## Kirjautuminen
 
-Sovelluksen luoma sivusto on suojattu salasanalla, jotta ulkopuoliset eivät pääse sitä lukemaan. Sovellukseen on määritelty kaksi käyttäjätiliä, jotka ovat sovelluksen testikäytön kannalta olennaisia. Nämä tilit ovat:
+Sovelluksen luoma sivusto on suojattu salasanalla, jotta ulkopuoliset eivät pääse sitä lukemaan. Heroku-sovellukseen on määritelty valmiiksi käyttäjätilejä, jotka ovat sovelluksen testikäytön kannalta käteviä. Nämä tilit ovat:
 
-| Käyttäjätunnus   | Salasana   |
-| ---------------- | ---------- |
-| admin            | pass       |
-| test             | pass       |
-| hello            | world      |
+| Käyttäjätunnus   | Salasana   | Käyttäjärooli |
+| ---------------- | ---------- | ------------- |
+| admin            | pass       | ADMIN         |
+| test             | pass       | USER          |
+| hello            | world      | USER          |
 
 Sovellukseen on mahdollista luoda uusia käyttäjiä. Kirjautuminen on helppoa, kirjautumaton käyttäjä ohjataan kirjautumissivulle __Log in__ -linkistä. 
 

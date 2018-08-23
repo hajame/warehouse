@@ -5,7 +5,7 @@ Tietokantasovellus-harjoitustyö 2018-kesä-2.
 Aihe: Varastonhallinta.  
 
 
-## Varastonhallintasovellus:
+## Varastonhallintasovellus
 
 Aiheeni on varastonhallintasovellus, jonka avulla käyttäjä voi tarkastella eri varastojen tilannetta.  
 
@@ -37,7 +37,7 @@ Password: world
 - [Asennusohje](https://github.com/hajame/warehouse/blob/master/documentation/installation_guide.md)
 
 
-### Toimintoja:
+### Toimintoja
 
 - Kirjautuminen ja uuden käyttäjän luominen
 - Eri varastojen tilanteen ja tuotteiden tarkastelu

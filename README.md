@@ -38,13 +38,13 @@ Password: world
 
 
 ### Toimintoja:
+
 - Kirjautuminen ja uuden käyttäjän luominen
 - Eri varastojen tilanteen ja tuotteiden tarkastelu
 	- Listataan vain ne varastot joihin käyttäjällä on oikeus
 - Listaus varaston tuotteista
 	- Listaus varastoista joissa on tietynnimistä tuotetta ja minkä verran
 	- Missä varastossa on kyseistä tuotetta eniten/vähiten [yhteenvetokysely]
-
 - Varaston lisääminen, poistaminen ja päivittäminen
 - Varaston käyttäjäoikeuksien myöntäminen
 - Tuotteen lisääminen, poistaminen ja päivittäminen

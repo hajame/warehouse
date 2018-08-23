@@ -26,9 +26,13 @@ Syötä kenttiin pyydetyt tiedot ja ota huomioon nimimerkeille ja salasanoille a
 
 Kirjautuessasi sovellukseen sinut ohjataan etusivulle, jossa on listattuna varastojen ja tuotteiden kokonaismäärät.
 
+![etusivu](https://github.com/hajame/warehouse/blob/master/documentation/images/index.png)  
+
 Etusivulle pääsee palaamaan muista sovelluksen näkymisetä klikkaamalla navigaatiopalkin vasemmassa yläreunassa olevasta __Warehouse__ nimestä.
 
 ## Warehouses 
+
+![warehouses](https://github.com/hajame/warehouse/blob/master/documentation/images/warehouses.png)  
 
 - __varastojen tarkastelu__
     - __Warehouses__ linkistä näet ne varastot, joihin käyttäjälläsi on käyttöoikeudet.
@@ -49,6 +53,8 @@ Anna varastolle uniikki __nimi__ ja __tilavuus__ väliltä 0-2147483647. Tilavuu
 
 ## Add an item - tuotteiden lisääminen varastoihin
 
+![lisää tuote](https://github.com/hajame/warehouse/blob/master/documentation/images/add_item.png)  
+
 1. Kirjoita tuotteen nimi kenttään __Name__.  
 2. Kirjoita tuotteen tilavuus kenttään __Volume__.
 3. Kirjoita lisättävä määrä kenttään __Amount__.
@@ -68,6 +74,8 @@ On suositeltavaa lisätä eri kokoisten pakkausten pakkauskoot suoraan tuotteen 
 
 
 ## List all items 
+
+![listaa tuotteet](https://github.com/hajame/warehouse/blob/master/documentation/images/list_all_items.png)  
 
 - listaa tuotteet ja hae tuotteen nimellä  
 

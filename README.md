@@ -27,7 +27,7 @@ Password: world
 
 ```  
 
-### dokumentaatio
+### Dokumentaatio
 
 - [Tietokantakaavio](https://github.com/hajame/warehouse/blob/master/documentation/WarehouseManagementDB.png)  
 - [Käyttäjätarinat (User stories)](https://github.com/hajame/warehouse/blob/master/documentation/user_stories.md)  

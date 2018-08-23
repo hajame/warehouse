@@ -10,7 +10,7 @@ Aihe: Varastonhallinta.
 Aiheeni on varastonhallinta-tietokantasovellus, jonka avulla käyttäjä voi tarkastella eri varastojen tilannetta. Käyttäjälle annetaan listaus hänen hallinnoimistaan varastoista. Käyttäjä voi tarkastella varastojen sisältöä ja tehdä hakuja eri tuotteisiin. Ylläpitäjän oikeiuksilla käyttäjä voi antaa toisille käyttäjille oikeuksia tarkastella ja muokata eri varastoja ja niiden sisältöä. 
 
 
-[Heroku](https://tsoha-warehouse.herokuapp.com/)  
+__Sovellus: https://tsoha-warehouse.herokuapp.com/__
 
 ```
 Testikäyttäjätunnukset 

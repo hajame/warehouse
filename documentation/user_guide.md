@@ -47,7 +47,7 @@ Etusivulle pääsee palaamaan muista sovelluksen näkymisetä klikkaamalla navig
 
 Anna varastolle uniikki __nimi__ ja __tilavuus__ väliltä 0-2147483647. Tilavuuden yksikkö on käyttäjän pään sisällä. Valitse __Add a new warehouse__ lisätäksesi varaston.
 
-# Add an item - tuotteiden lisääminen varastoihin
+## Add an item - tuotteiden lisääminen varastoihin
 
 1. Kirjoita tuotteen nimi kenttään __Name__.  
 2. Kirjoita tuotteen tilavuus kenttään __Volume__.

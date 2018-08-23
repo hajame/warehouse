@@ -11,26 +11,31 @@ Aiheeni on varastonhallinta-tietokantasovellus, jonka avulla käyttäjä voi tar
 
 
 [Heroku](https://tsoha-warehouse.herokuapp.com/)  
-[Tietokantakaavio](https://github.com/hajame/warehouse/blob/master/documentation/WarehouseManagementDB.png)  
-[Käyttäjätarinat (User stories)](https://github.com/hajame/warehouse/blob/master/documentation/user_stories.md)  
-[Käyttöohje](https://github.com/hajame/warehouse/blob/master/documentation/user_guide.md)
-
 
 ```
 Testikäyttäjätunnukset 
 -----------------------
 
-(käyttäjille näytetään erilaiset varastolistaukset)
-
+Username: admin
+Password: pass
+----------------
 Username: test
 Password: pass
-
 ----------------
-
 Username: hello
 Password: world
 
 ```  
+
+### dokumentaatio
+
+[Tietokantakaavio](https://github.com/hajame/warehouse/blob/master/documentation/WarehouseManagementDB.png)  
+[Käyttäjätarinat (User stories)](https://github.com/hajame/warehouse/blob/master/documentation/user_stories.md)  
+[Käyttöohje](https://github.com/hajame/warehouse/blob/master/documentation/user_guide.md)
+[Asennusohje](https://github.com/hajame/warehouse/blob/master/documentation/installation_guide.md)
+
+
+
 
 ### Toimintoja:
 - Kirjautuminen ja uuden käyttäjän luominen

@@ -73,15 +73,7 @@ $ cd ~/projekti
 $ heroku create projekti
 ```
 
-5. Viritä seuraavaksi Herokun PostgreSQL tietokanta, jotta sovelluksen tieto tallentuu myös Herokussa
-```
-$ heroku config:set HEROKU=1
-$ heroku addons:add heroku-postgresql:hobby-dev
-```
-
-6. Sovelluksella on nyt toimiva PostgreSQL -tietokanta Herokun palvelimella
-
-7. Lisää paikalliseen versionhallintaan tieto Herokusta ja lähetä projekti Herokuun
+5. Lisää paikalliseen versionhallintaan tieto Herokusta ja lähetä projekti Herokuun
 
 ```
 $ git remote add heroku
@@ -90,4 +82,12 @@ $ git commit -m "heroku setup"
 $ git push heroku master
 ```
 
-8. Projekti pyörii nyt Herokussa
+6. Projekti pyörii nyt Herokussa
+
+7. Viritä seuraavaksi Herokun PostgreSQL tietokanta, jotta sovelluksen tieto tallentuu myös Herokussa
+```
+$ heroku config:set HEROKU=1
+$ heroku addons:add heroku-postgresql:hobby-dev
+```
+
+8. Sovelluksella on nyt toimiva PostgreSQL -tietokanta Herokun palvelimella

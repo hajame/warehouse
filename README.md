@@ -13,6 +13,7 @@ Aiheeni on varastonhallinta-tietokantasovellus, jonka avulla käyttäjä voi tar
 [Heroku](https://tsoha-warehouse.herokuapp.com/)  
 [Tietokantakaavio](https://github.com/hajame/warehouse/blob/master/documentation/WarehouseManagementDB.png)  
 [Käyttäjätarinat (User stories)](https://github.com/hajame/warehouse/blob/master/documentation/user_stories.md)  
+[Käyttöohje](https://github.com/hajame/warehouse/blob/master/documentation/user_guide.md)
 
 
 ```

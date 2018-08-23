@@ -14,7 +14,7 @@ Koneessa tulee olla asennettuna
 
 ## Asennus
 
-1. Kloonaa projekti koneellesi
+1. Kloonaa projekti koneellesi haluamaasi kansioon.
 
 ```
 $ git clone git@github.com:hajame/warehouse.git
@@ -39,9 +39,21 @@ $ pip install -r requirements.txt
 $ python3 run.py
 ```
 
-8. Navigoi osoitteeseen http://localhost:5000/
 
-9. Voit nyt käyttää sovellusta lokaalissa verkkoympäristössä
+8. Lisää sovellukseen ensimmäinen pääkäyttäjä
+
+Kirjoita seuraavat komennot terminaaliin. Vaihda kenttien nimi, käyttäjätunnus ja salasana haluamiksisi.
+
+_HUOM!_ role_id:n tulee olla 2, jotta käyttäjällä on pääkäyttäjän oikeudet
+
+```
+$ sqlite3 application/warehouses.db 
+sqlite> INSERT INTO account (name, username, password, role_id) VALUES ('Admin', 'admin', 'pass', 2);
+```
+
+9. Navigoi osoitteeseen http://localhost:5000/
+
+10. Voit nyt käyttää sovellusta lokaalissa verkkoympäristössä
 
 
 ## Sovelluksen asentaminen Herokuun
@@ -68,6 +80,8 @@ $ heroku login
 ```
 
 4. Navigoi kansioon johon loit paikallisen projektin ja luo Heroku projekti siitä
+
+Vaihda saman _projekti_ haluamasi projektin nimi.
 ```
 $ cd ~/projekti
 $ heroku create projekti
@@ -91,3 +105,15 @@ $ heroku addons:add heroku-postgresql:hobby-dev
 ```
 
 8. Sovelluksella on nyt toimiva PostgreSQL -tietokanta Herokun palvelimella
+
+9. Lisää sovellukseen ensimmäinen pääkäyttäjä
+
+Kirjoita komentoriville. Vaihda kenttien nimi, käyttäjätunnus ja salasana haluamiksisi.
+
+_HUOM!_ role_id:n tulee olla 2, jotta käyttäjällä on pääkäyttäjän oikeudet
+
+```
+$ heroku pg:psql
+projekti::DATABASE=> INSERT INTO account (name, username, password, role_id) VALUES ('Admin', 'admin', 'pass', 2);
+```
+

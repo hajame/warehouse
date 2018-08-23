@@ -75,6 +75,22 @@ def load_user(user_id):
 # Luodaan lopulta tarvittavat tietokantataulut
 try: 
     db.create_all()
+
+    from application.auth.models import Role
+    
+    role = Role.query.filter_by(name='USER').first()
+
+    if not role:
+        role = Role('USER')
+        db.session().add(role)
+        db.session().commit()
+
+    role = Role.query.filter_by(name='ADMIN').first()
+
+    if not role:
+        role = Role('ADMIN')
+        db.session().add(role)
+        db.session().commit()
     
 except:
     pass

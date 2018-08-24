@@ -3,23 +3,26 @@
 
 <h2>{{ warehouse.name }}</h2>
 
-<table>
+<table class="table table-sm table-hover" style="width: 55%">
   <tr>
-    <th>Name</th>
-    <th>Volume</th>
-    <th></th>
+    <thead class="thead-light">
+      <th>Name</th>
+      <th>Volume</th>
+      <th></th>
+      <th></th>
+    </thead>
   </tr>
   <tr>
     <td>{{ warehouse.name }}</td>
     <td>{{ warehouse.volume }}</td>
-    <td>
+    <td style="width: 10mm">
       <form method="GET" action="{{ url_for('warehouses_edit', warehouse_id=warehouse.id) }}">
-        <input type="submit" value=" edit " />
+        <input type="submit" class="btn btn-primary" value=" edit " />
       </form>
     </td>
-    <td>
+    <td style="width: 20mm">
       <form method="GET" action="{{ url_for('warehouses_delete', warehouse_id=warehouse.id) }}">
-          <input type="submit" value=" delete " />
+        <input type="submit" class="btn btn-danger" value="delete" />
       </form>
     </td>
   </tr>
@@ -27,33 +30,39 @@
 
 <h3>Item list</h3>
 
-  <table>
-    <tr>
-      <th>Item</th>
-      <th>Volume</th>
-      <th>Amount</th>
-    </tr>
-    {% for warehouse_item in warehouse.warehouse_items %}
-    <tr>
-      <td>{{ warehouse_item.item.name }}</td>
-      <td>{{ warehouse_item.item.volume }}</td>
-      <td>{{ warehouse_item.amount }}</td>
-      <td>
-          <form method="POST" action="{{ url_for('items_take_one', item_id = warehouse_item.item.id, warehouse_id = warehouse.id) }}">
-              <input type="submit" value=" - "/>
-          </form>
-      </td>
-      <td>
-          <form method="POST" action="{{ url_for('items_add_one', item_id = warehouse_item.item.id, warehouse_id = warehouse.id) }}">
-              <input type="submit" value=" + "/>
-          </form>
-      </td>
-      <td>
-        <form method="GET" action="{{ url_for('warehouse_item_delete',  item_id = warehouse_item.item.id, warehouse_id = warehouse.id) }}">
-            <input type="submit" value=" delete " />
-        </form>
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
+<table class="table table-sm table-hover table-striped" style="width: 55%">
+  <tr>
+    <thead class="thead-light">
+      <th style="width: 55mm">Item</th>
+      <th style="width: 20mm">Volume</th>
+      <th style="width: 45mm">Amount</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </thead>
+  </tr>
+  {% for warehouse_item in warehouse.warehouse_items %}
+  <tr>
+    <td>{{ warehouse_item.item.name }}</td>
+    <td>{{ warehouse_item.item.volume }}</td>
+    <td>{{ warehouse_item.amount }}</td>
+
+    <td>
+      <form method="POST" action="{{ url_for('items_take_one', item_id = warehouse_item.item.id, warehouse_id = warehouse.id) }}">
+        <input type="submit" class="btn btn-secondary btn-sm" style="width: 9mm" value=" - " />
+      </form>
+    </td>
+    <td>
+      <form method="POST" action="{{ url_for('items_add_one', item_id = warehouse_item.item.id, warehouse_id = warehouse.id) }}">
+        <input type="submit" class="btn btn-success btn-sm" style="width: 10mm" value=" + " />
+      </form>
+    </td>
+    <td>
+      <form method="GET" action="{{ url_for('warehouse_item_delete',  item_id = warehouse_item.item.id, warehouse_id = warehouse.id) }}">
+        <input type="submit" class="btn btn-danger btn-sm" style="width: 20mm" value=" delete " />
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}

@@ -2,7 +2,7 @@
 <h1>Add warehouse</h1>
 
 <form method="POST" action="{{ url_for('warehouses_create') }}">
-  <table style="width:100%">
+  <table style="width:60%">
     <tr>
       <td>
         {{ form.name.label }}
@@ -37,7 +37,7 @@
         </td>      
     </tr>
   </table>
-  <input type="submit" value="Add a new warehouse" />
+  <input type="submit" class="btn btn-primary" value="Add a new warehouse" />
 </form>
 
 {% endblock %}

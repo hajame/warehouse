@@ -3,21 +3,21 @@
 {% block body %}
 <h1>Warehouses</h1>
 
-<h2>List of warehouses</h2>
-
-  <table>
+  <table class="table table-sm table-hover" style="width: 50%">
     <tr>
-      <th>Warehouse</th>
-      <th>Volume</th>
-      <th></th>
+      <thead class="thead-light">
+        <th>Warehouse</th>
+        <th>Volume</th>
+        <th></th>
+      </thead>
     </tr>
     {% for warehouse in warehouses %}
     <tr>
       <td>{{ warehouse.name }}</td>
-      <td>{{ warehouse.volume }}</td>
-      <td>
+      <td style="width: 40mm">{{ warehouse.volume }}</td>
+      <td style="width: 20mm">
           <form method="GET" action="{{ url_for('warehouse_single', warehouse_id=warehouse.id) }}">
-              <input type="submit" value=" view "/>
+              <input type="submit" class="btn btn-primary" value=" view "/>
           </form>
       </td>
     </tr>

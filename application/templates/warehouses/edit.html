@@ -2,7 +2,7 @@
 <h1>Edit warehouse</h1>
 
 <form method="POST" action="{{ url_for('warehouses_edit', warehouse_id=warehouse_id) }}">
-  <table style="width:100%">
+  <table style="width:60%">
     <tr>
       <td>
         {{ form.name.label }}
@@ -34,7 +34,7 @@
         </td>      
     </tr>
   </table>
-  <input type="submit" value="OK" />
+  <input type="submit" class="btn btn-primary" value="OK" />
 </form>
 
 {% endblock %}

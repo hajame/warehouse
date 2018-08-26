@@ -29,7 +29,7 @@ Password: world
 
 ```  
 
-### Dokumentaatio
+## Dokumentaatio
 
 - [Tietokantakaavio](https://github.com/hajame/warehouse/blob/master/documentation/images/WarehouseManagementDB.png)  
 - [Käyttäjätarinat](https://github.com/hajame/warehouse/blob/master/documentation/user_stories.md)  
@@ -38,18 +38,22 @@ Password: world
 - [Omat kokemukset](https://github.com/hajame/warehouse/blob/master/documentation/reflection_of_experiences.md)
 
 
+## Toteutuneet ja toteutumattomat ominaisuudet
 
-### Toimintoja
+### Toteutuneet ominaisuudet
 
-- Kirjautuminen ja uuden käyttäjän luominen. `valmis`
-- Eri varastojen tilanteen ja tuotteiden tarkastelu. `valmis`
-	- Listataan vain ne varastot joihin käyttäjällä on oikeus. `valmis`
-- Listaus varaston tuotteista. `valmis`
-	- Mahdollisuus poistaa koko tuotenimi varastosta tai muokata tuotteen määrää varastossa. `valmis`
-- Missä varastossa on kyseistä tuotetta- -- yhteenvetokysely -- `valmis`
-	- Missä varastossa on eniten/vähiten tuotetta. -- yhteenvetokysely -- `ei toteutettu`
-- Varaston lisääminen, poistaminen ja päivittäminen. `valmis`
-- Varaston käyttäjäoikeuksien myöntäminen. `ainoastaan varastoa luodessa`
+- Kirjautuminen ja uuden käyttäjän luominen.
+- Eri varastojen tilanteen ja tuotteiden tarkastelu.
+	- Listataan vain ne varastot joihin käyttäjällä on oikeus.
+- Listaus varaston tuotteista.
+	- Mahdollisuus poistaa koko tuotenimi varastosta tai muokata tuotteen määrää varastossa. 
+- Missä varastossa on kyseistä tuotetta- -- yhteenvetokysely -- 
+- Varaston lisääminen, poistaminen ja päivittäminen. 
+- Jos jokin tuote vie enemmän tilaa kuin varastossa on kapasiteettia jäljellä, ei tuotetta lisätä. 
+- Saman tuottenimen lisääminen kahdesti lisää tuotteen määrää. 
+
+### Toteutumattomat ominaisuudet
+
+- Missä varastossa on eniten/vähiten tuotetta. -- yhteenvetokysely -- `ei toteutettu`
 - Tuotteen lisääminen, poistaminen ja päivittäminen. `toteutettu osin`
-	- Jos jokin tuote vie enemmän tilaa kuin varastossa on kapasiteettia jäljellä, ei tuotetta lisätä. `valmis`
-	- Saman tuottenimen lisääminen kahdesti lisää tuotteen määrää. `valmis`
+- Varaston käyttäjäoikeuksien myöntäminen. `ainoastaan varastoa luodessa`

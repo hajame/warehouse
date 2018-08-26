@@ -35,6 +35,8 @@ Password: world
 - [Käyttäjätarinat](https://github.com/hajame/warehouse/blob/master/documentation/user_stories.md)  
 - [Käyttöohje](https://github.com/hajame/warehouse/blob/master/documentation/user_guide.md)  
 - [Asennusohje](https://github.com/hajame/warehouse/blob/master/documentation/installation_guide.md)
+- [Omat kokemukset](https://github.com/hajame/warehouse/blob/master/documentation/reflection_of_experiences.md)
+
 
 
 ### Toimintoja

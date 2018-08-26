@@ -9,7 +9,7 @@ Aihe: Varastonhallinta.
 
 Aiheeni on varastonhallintasovellus, jonka avulla käyttäjä voi tarkastella eri varastojen tilannetta.  
 
-Käyttäjälle annetaan listaus hänen hallinnoimistaan  varastoista. Käyttäjä voi tarkastella varastojen sisältöä ja tehdä hakuja eri tuotteisiin. Ylläpitäjän oikeuksilla käyttäjä voi antaa toisille käyttäjille oikeuksia tarkastella ja muokata eri varastoja ja niiden sisältöä.  
+Käyttäjälle annetaan listaus hänen hallinnoimistaan  varastoista. Käyttäjä voi tarkastella varastojen sisältöä ja hakea tuotteita varastoista tuotteen nimellä. Ylläpitäjän oikeuksilla käyttäjä voi antaa toisille käyttäjille oikeuksia tarkastella ja muokata eri varastoja ja niiden sisältöä.  
 
 
 __Sovellus: https://tsoha-warehouse.herokuapp.com/__
@@ -47,13 +47,13 @@ Password: world
 	- Listataan vain ne varastot joihin käyttäjällä on oikeus.
 - Listaus varaston tuotteista.
 	- Mahdollisuus poistaa koko tuotenimi varastosta tai muokata tuotteen määrää varastossa. 
-- Missä varastossa on kyseistä tuotetta- -- yhteenvetokysely -- 
+- Missä varastossa on kyseistä tuotetta- `yhteenvetokysely`
 - Varaston lisääminen, poistaminen ja päivittäminen. 
 - Jos jokin tuote vie enemmän tilaa kuin varastossa on kapasiteettia jäljellä, ei tuotetta lisätä. 
 - Saman tuottenimen lisääminen kahdesti lisää tuotteen määrää. 
 
 ### Toteutumattomat ominaisuudet
 
-- Missä varastossa on eniten/vähiten tuotetta. -- yhteenvetokysely -- `ei toteutettu`
+- Missä varastossa on eniten/vähiten tuotetta. `yhteenvetokysely` `ei toteutettu`
 - Tuotteen lisääminen, poistaminen ja päivittäminen. `toteutettu osin`
-- Varaston käyttäjäoikeuksien myöntäminen. `ainoastaan varastoa luodessa`
+- Varaston käyttäjäoikeuksien myöntäminen. `ainoastaan varastoa luotaessa`

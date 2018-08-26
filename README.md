@@ -44,8 +44,8 @@ Password: world
 	- Listataan vain ne varastot joihin käyttäjällä on oikeus. `valmis`
 - Listaus varaston tuotteista. `valmis`
 	- Mahdollisuus poistaa koko tuotenimi varastosta tai muokata tuotteen määrää varastossa. `valmis`
-- Missä varastossa on kyseistä tuotetta [yhteenvetokysely] `valmis`
-	- Missä varastossa on eniten/vähiten tuotettta [yhteenvetokysely] `ei toteutettu`
+- Missä varastossa on kyseistä tuotetta- -- yhteenvetokysely -- `valmis`
+	- Missä varastossa on eniten/vähiten tuotetta. -- yhteenvetokysely -- `ei toteutettu`
 - Varaston lisääminen, poistaminen ja päivittäminen. `valmis`
 - Varaston käyttäjäoikeuksien myöntäminen. `ainoastaan varastoa luodessa`
 - Tuotteen lisääminen, poistaminen ja päivittäminen. `toteutettu osin`

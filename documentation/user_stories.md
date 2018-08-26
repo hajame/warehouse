@@ -4,14 +4,17 @@ Alla on kuvattuna varastonhallintasovellukselle olennaisia käyttäjätarinoita.
 
 Käyttäjänä...
 
-1. Haluan tarkastella varastojen sisältöä ja kappalemääriä.
-    - Näen myös paljonko missäkin varastossa on tilaa jäljellä.
-2. Voin lisätä tai poistaa tuotteita varastosta nopeasti.
-    - Voin kirjoittaa poistettavan kappalemäärän tai klikata hiirellä yksittäisiä tuotepoistoja.
-    - Voin myös poistaa kaikki saman tyypin tuotteet varastosta.
-3. Haluan luoda uusia varastoja ja hallinnoida niiden tietoja.
-4. Haluan saada tiedon tietyn tuotteen varastotilanteesta.
-    - Haku listaa varastot ja tuotteen kappalemäärät.
-        - `SELECT Warehouse.name, WarehouseItem.amount FROM User, WarehouseUser, Warehouse, WarehouseItem, Item WHERE User.id = WarehouseUser.user_id AND WarehouseUser.warehouse_id = Warehouse.id AND Warehouse.id = WarehouseItem.warehouse_id AND Item.id = WarehouseItem.item_id AND Item.name = 'Flower pot' ;`
-    - Haku listaa, missä varastossa on eniten kyseistä tuotetta.
-        - `SELECT MAX(WarehouseItem.amount) FROM User, WarehouseUser, Warehouse, WarehouseItem, Item WHERE User.id = WarehouseUser.user_id AND WarehouseUser.warehouse_id = Warehouse.id AND Warehouse.id = WarehouseItem.warehouse_id AND Item.id = WarehouseItem.item_id AND Item.name = 'Flower pot' ;`
+1. Haluan tarkastella varastojen sisältöä ja kappalemääriä. [valmis]
+    - Näen myös paljonko missäkin varastossa on tilaa jäljellä. [ei toteutettu]
+2. Voin lisätä tai poistaa tuotteita varastosta nopeasti. [valmis]
+    - Voin kirjoittaa kappalemäärän, joka poistetaan [ei toteutettu]
+    - Voin klikata hiirellä yksittäisiä tuotepoistoja tai lisäyksiä [valmis]
+    - Voin myös poistaa kaikki samaa nimeä edustavat tuotteet varastosta. [valmis]
+3. Haluan luoda uusia varastoja ja hallinnoida niiden tietoja. [valmis]
+4. Haluan saada tiedon tietyn tuotteen varastotilanteesta. [valmis]
+    - Haluan listan varastoista, joissa kyseistä tuotetta on, ja tuotteen kappalemäärät. [valmis, mutta määrät ei näy]
+        > `SELECT warehouse.name, warehouse_item.amount FROM account, account_warehouse, warehouse, warehouse_item, item WHERE account.id = account_warehouse.user_id AND account_warehouse.warehouse_id = warehouse.id AND warehouse.id = warehouse_item.warehouse_id AND item.id = warehouse_item.item_id AND item.name = 'Flower pot' ;`
+    - Haluan tietää, missä varastossa on eniten kyseistä tuotetta. [ei toteutettu]
+        > `SELECT warehouse.name, MAX(WarehouseItem.amount) FROM account, account_warehouse, warehouse, warehouse_item, item WHERE account.id = account_warehouse.user_id AND account_warehouse.warehouse_id = warehouse.id AND warehouse.id = warehouse_item.warehouse_id AND item.id = warehouse_item.item_id AND item.name = 'Flower pot' ;`
+
+

@@ -39,15 +39,15 @@ Password: world
 
 ### Toimintoja
 
-- Kirjautuminen ja uuden käyttäjän luominen [valmis]
-- Eri varastojen tilanteen ja tuotteiden tarkastelu [valmis]
-	- Listataan vain ne varastot joihin käyttäjällä on oikeus
-- Listaus varaston tuotteista [valmis]
-	- Listaus varastoista joissa on tietynnimistä tuotetta ja minkä verran
-	- Mahdollisuus poistaa koko tuotenimi varastosta tai muokata sen määrää.
-- Missä varastossa on kyseistä tuotetta [yhteenvetokysely] [valmis]
-	- Missä varastossa on eniten/vähiten tuotettta [yhteenvetokysely] [ei toteutettu]
-- Varaston lisääminen, poistaminen ja päivittäminen [valmis]
-- Varaston käyttäjäoikeuksien myöntäminen [ainoastaan varastoa luodessa]
-- Tuotteen lisääminen, poistaminen ja päivittäminen [ei toteutettu]
-	- Jos jokin tuote vie enemmän tilaa kuin varastossa on kapasiteettia jäljellä, ei tuotetta lisätä.
+- Kirjautuminen ja uuden käyttäjän luominen. `valmis`
+- Eri varastojen tilanteen ja tuotteiden tarkastelu. `valmis`
+	- Listataan vain ne varastot joihin käyttäjällä on oikeus. `valmis`
+- Listaus varaston tuotteista. `valmis`
+	- Mahdollisuus poistaa koko tuotenimi varastosta tai muokata tuotteen määrää varastossa. `valmis`
+- Missä varastossa on kyseistä tuotetta [yhteenvetokysely] `valmis`
+	- Missä varastossa on eniten/vähiten tuotettta [yhteenvetokysely] `ei toteutettu`
+- Varaston lisääminen, poistaminen ja päivittäminen. `valmis`
+- Varaston käyttäjäoikeuksien myöntäminen. `ainoastaan varastoa luodessa`
+- Tuotteen lisääminen, poistaminen ja päivittäminen. `toteutettu osin`
+	- Jos jokin tuote vie enemmän tilaa kuin varastossa on kapasiteettia jäljellä, ei tuotetta lisätä. `valmis`
+	- Saman tuottenimen lisääminen kahdesti lisää tuotteen määrää. `valmis`

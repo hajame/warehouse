@@ -14,8 +14,15 @@ Käyttäjälle annetaan listaus hänen hallinnoimistaan  varastoista. Käyttäj�
 
 __Sovellus: https://tsoha-warehouse.herokuapp.com/__
 
+### Testikäyttäjätunnukset 
+
+|	   |   admin	   |	 test      |	    hello |
+|----------|-------|-----------|-------------|
+| __PASSWORD__ | pass  | pass      | world       |
+| __ROLE__     | ADMIN | USER      | USER        |
+
 ```
-Testikäyttäjätunnukset 
+
 -----------------------
 
 Username: admin

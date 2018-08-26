@@ -2,7 +2,7 @@
 
 Alla on kuvattuna varastonhallintasovellukselle olennaisia käyttäjätarinoita.
 
-Käyttäjänä...
+### Käyttäjänä...
 
 1. Haluan tarkastella varastojen sisältöä ja kappalemääriä. [valmis]
     - Näen myös paljonko missäkin varastossa on tilaa jäljellä. [ei toteutettu]
@@ -18,7 +18,7 @@ Käyttäjänä...
     - Haluan tietää, missä varastossa on eniten kyseistä tuotetta. [ei toteutettu]
         > `SELECT warehouse.name, MAX(WarehouseItem.amount) FROM account, account_warehouse, warehouse, warehouse_item, item WHERE account.id = account_warehouse.user_id AND account_warehouse.warehouse_id = warehouse.id AND warehouse.id = warehouse_item.warehouse_id AND item.id = warehouse_item.item_id AND item.name = 'Flower pot' ;`
 
-Pääkäyttäjänä...
+### Pääkäyttäjänä...
 
 1. Haluan saada listan kaikista järjestelmän varastoista. [valmis]
 2. Haluan antaa käyttäjille oikeuksia hallinoida varastoja. [ei toteutettu]

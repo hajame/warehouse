@@ -21,20 +21,6 @@ __Sovellus: https://tsoha-warehouse.herokuapp.com/__
 | __PASSWORD__ | pass  | pass      | world       |
 | __ROLE__     | ADMIN | USER      | USER        |
 
-```
-
------------------------
-
-Username: admin
-Password: pass
-----------------
-Username: test
-Password: pass
-----------------
-Username: hello
-Password: world
-
-```  
 
 ## Dokumentaatio
 

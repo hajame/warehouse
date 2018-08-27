@@ -46,7 +46,11 @@
     <td>{{ warehouse_item.item.name }}</td>
     <td>{{ warehouse_item.item.volume }}</td>
     <td>{{ warehouse_item.amount }}</td>
-
+    <td>
+      <form method="GET" action="{{ url_for('amount_edit', item_id = warehouse_item.item.id, warehouse_id = warehouse.id) }}">
+        <input type="submit" class="btn btn-secondary btn-sm" style="width: 17mm" value=" edit " />
+      </form>
+    </td>
     <td>
       <form method="POST" action="{{ url_for('items_take_one', item_id = warehouse_item.item.id, warehouse_id = warehouse.id) }}">
         <input type="submit" class="btn btn-secondary btn-sm" style="width: 9mm" value=" - " />

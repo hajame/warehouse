@@ -11,6 +11,7 @@ users = db.Table('account_warehouse',
                            db.ForeignKey('warehouse.id'), primary_key=True)
                  )
 
+
 class Warehouse(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(32), nullable=False, unique=True)
@@ -18,12 +19,34 @@ class Warehouse(db.Model):
 
     users = db.relationship('User', secondary=users, lazy='subquery',
                             backref=db.backref('warehouses', lazy=True))
-    
-    warehouse_items = db.relationship('Warehouse_item', cascade='delete', lazy=True)
+
+    warehouse_items = db.relationship(
+        'Warehouse_item', cascade='delete', lazy=True)
 
     def __init__(self, name, volume):
         self.name = name
         self.volume = volume
+
+    @staticmethod
+    def fits(id, amount):
+
+        stmt = text("SELECT SUM(amount) from warehouse_item "
+                    "WHERE warehouse_id = :param ;").params(param = id)
+        res = db.engine.execute(stmt)
+        warehouse_status = res.fetchone()[0]
+
+        if warehouse_status + amount < 0:
+            return False
+            
+        stmt = text("SELECT volume from warehouse "
+                    "WHERE warehouse.id = :param ;").params(param = id)
+        res = db.engine.execute(stmt)
+        volume = res.fetchone()[0]
+
+        if warehouse_status + amount > volume:
+            return False
+
+        return True
 
     @staticmethod
     def find_warehouses_with_item(item):
@@ -36,9 +59,6 @@ class Warehouse(db.Model):
         response = []
         for row in res:
             response.append({"name": row[0]})
-
-        for row in res:
-            print(row[0])
 
         return response
 
@@ -56,7 +76,7 @@ class Warehouse(db.Model):
 
 class Warehouse_item(db.Model):
     warehouse_id = db.Column(db.Integer, db.ForeignKey('warehouse.id'),
-                        primary_key=True)
+                             primary_key=True)
     item_id = db.Column(db.Integer, db.ForeignKey('item.id'),
                         primary_key=True)
     amount = db.Column(db.Integer)

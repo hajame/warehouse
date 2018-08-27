@@ -1,0 +1,36 @@
+{% extends "layout.html" %} {% block body %}
+<h1>Edit amount</h1>
+
+<h3>{{ warehouse.name }}</h2>
+
+<p>Warehouse volume: {{ warehouse.volume }}</p>
+
+<form method="POST" action="{{ url_for('amount_edit', item_id=item.id, warehouse_id=warehouse.id) }}">
+    <table class="table" style="width:60%">
+        <tr>
+            <td style="width: 60mm">
+                {{ item.name }}
+            </td> 
+            <td>
+                {{ form.amount.label }}
+            </td>
+            <td>
+                {{ form.amount }}
+            </td>
+            <td>
+                <ul>
+                    {% for amount_error in form.amount.errors %}
+                    <li>{{ amount_error }}</li>
+                    {% endfor %} 
+                    {% if error %}
+                    <li>{{ error }}</li>
+                    {% endif %}
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" class="btn btn-primary" value="Set amount" />
+</form>
+
+{% endblock %}

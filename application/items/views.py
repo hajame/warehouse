@@ -1,35 +1,35 @@
-from application import app, db
+from application import app, db, login_required, login_manager
 from flask import redirect, render_template, request, url_for
-from flask_login import login_required, current_user
+from flask_login import current_user
 
 from application.items.models import Item
 from application.warehouses.models import Warehouse, Warehouse_item
-from application.items.forms import ItemForm, SearchForm
+from application.items.forms import SearchForm, ItemEditForm, ItemForm, AmountForm
 
 from sqlalchemy.sql import text
 
 
 @app.route("/items/", methods=["GET"])
-@login_required
+@login_required()
 def items_index():
     return render_template("items/list.html", items=Item.query.all(), form=SearchForm(), warehouses=[])
 
 
 @app.route("/items/new/")
-@login_required
+@login_required()
 def items_form():
     return render_template("items/new.html", form=ItemForm(), warehouse_error="")
 
 
 @app.route("/items/", methods=["POST"])
-@login_required
+@login_required()
 def items_search():
 
     form = SearchForm(request.form)
 
     if not form.validate():
         return render_template("items/list.html", form=form)
-
+    
     item = Item.query.filter_by(name=form.name.data).first()
 
     stmt = text("SELECT DISTINCT warehouse.id "
@@ -43,13 +43,13 @@ def items_search():
     for row in res:
         a = Warehouse.query.get(row[0])
         warehouses.append(a)
-        print(a)
 
-    return render_template("items/list.html", items=Item.query.all(), form=SearchForm(), warehouses=warehouses)
+    return render_template("items/list.html", items=Item.query.all(),
+                    form=SearchForm(), warehouses=warehouses)
 
 
 @app.route("/items/new", methods=["POST"])
-@login_required
+@login_required()
 def items_create():
     form = ItemForm(request.form)
 
@@ -81,3 +81,37 @@ def items_create():
         db.session().commit()
 
     return redirect(url_for("warehouse_single", warehouse_id=warehouse.id))
+
+
+@app.route("/items/<item_id>/edit/", methods=["GET", "POST"])
+@login_required()
+def items_edit(item_id):
+
+    if request.method == "GET":
+
+        item = Item.query.get(item_id)
+        form = ItemEditForm(obj=item)   
+
+        return render_template("items/edit.html", form=form, item_id=item_id)
+
+    form = ItemEditForm(request.form)
+    item = Item.query.get(item_id) 
+      
+    if not form.validate():
+        return render_template("items/edit.html", form=form, item_id=item_id)
+
+    item.name = form.name.data
+    item.volume = form.volume.data
+
+    db.session().commit()
+
+    return redirect(url_for("items_index"))
+
+@app.route("/items/<item_id>/delete", methods=["GET"])
+@login_required()
+def items_delete(item_id):
+
+    db.session.delete(Item.query.get(item_id))
+    db.session().commit()
+
+    return redirect(url_for("items_index"))

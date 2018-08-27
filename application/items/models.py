@@ -7,7 +7,8 @@ class Item(db.Model):
     name = db.Column(db.String(64), nullable=False, unique=True)
     volume = db.Column(db.Integer)
 
-    warehouse_items = db.relationship('Warehouse_item', lazy=True)
+    warehouse_items = db.relationship('Warehouse_item', 
+                        cascade='delete', lazy=True)
 
     def __init__(self, name, volume):
         self.name = name

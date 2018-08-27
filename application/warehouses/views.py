@@ -5,7 +5,7 @@ from flask_login import current_user
 from application.warehouses.models import Warehouse, Warehouse_item
 from application.warehouses.forms import WarehouseForm
 from application.items.models import Item
-from application.items.forms import ItemForm
+from application.items.forms import ItemForm, AmountForm
 
 
 @app.route("/warehouses/", methods=["GET"])
@@ -13,10 +13,12 @@ from application.items.forms import ItemForm
 def warehouses_index():
     return render_template("warehouses/list.html", warehouses=current_user.warehouses)
 
+
 @app.route("/warehouses/all", methods=["GET"])
 @login_required(role="ADMIN")
 def warehouses_all():
     return render_template("warehouses/list.html", warehouses=Warehouse.query.all())
+
 
 @app.route("/warehouses/new/")
 @login_required()
@@ -64,7 +66,7 @@ def warehouses_delete(warehouse_id):
 def warehouse_single(warehouse_id):
     form = ItemForm(request.form)
 
-    return render_template("warehouses/single.html", warehouse=Warehouse.query.get(warehouse_id), form = form)
+    return render_template("warehouses/single.html", warehouse=Warehouse.query.get(warehouse_id), form=form)
 
 
 @app.route("/warehouses", methods=["POST"])
@@ -88,36 +90,76 @@ def warehouses_create():
 
     return redirect(url_for("warehouses_index"))
 
+
 @app.route("/warehouses/<warehouse_id>/single/<item_id>/", methods=["POST"])
 @login_required()
 def items_take_one(item_id, warehouse_id):
 
-    t = Warehouse_item.query.filter_by(item_id=item_id, warehouse_id=warehouse_id).first()
+    t = Warehouse_item.query.filter_by(
+        item_id=item_id, warehouse_id=warehouse_id).first()
     if t.amount > 0:
         t.amount = t.amount - 1
     db.session().commit()
 
-    return redirect(url_for("warehouse_single", warehouse_id = warehouse_id))
+    return redirect(url_for("warehouse_single", warehouse_id=warehouse_id))
 
 
 @app.route("/warehouses/<warehouse_id>/single/<item_id>+/", methods=["POST"])
 @login_required()
 def items_add_one(item_id, warehouse_id):
 
-    t = Warehouse_item.query.filter_by(item_id=item_id, warehouse_id=warehouse_id).first()
+    t = Warehouse_item.query.filter_by(
+        item_id=item_id, warehouse_id=warehouse_id).first()
     if t.amount < 2147483647:
         t.amount = t.amount + 1
     db.session().commit()
 
-    return redirect(url_for("warehouse_single", warehouse_id = warehouse_id))
+    return redirect(url_for("warehouse_single", warehouse_id=warehouse_id))
 
 
 @app.route("/warehouses/<warehouse_id>/single/<item_id>/delete", methods=["GET"])
 @login_required()
 def warehouse_item_delete(item_id, warehouse_id):
 
-    t = Warehouse_item.query.filter_by(item_id=item_id, warehouse_id=warehouse_id).first()
+    t = Warehouse_item.query.filter_by(
+        item_id=item_id, warehouse_id=warehouse_id).first()
     db.session.delete(t)
     db.session().commit()
 
-    return redirect(url_for("warehouse_single", warehouse_id = warehouse_id))
+    return redirect(url_for("warehouse_single", warehouse_id=warehouse_id))
+
+
+@app.route("/warehouses/<warehouse_id>/edit_amount/<item_id>", methods=["GET", "POST"])
+@login_required()
+def amount_edit(item_id, warehouse_id):
+
+    if request.method == "GET":
+        warehouse_item = Warehouse_item.query.filter_by(item_id=item_id,
+                                                        warehouse_id=warehouse_id).first()
+        item = Item.query.get(item_id)
+        warehouse = Warehouse.query.get(warehouse_id)
+        form = AmountForm(amount=warehouse_item.amount)
+        return render_template("warehouses/edit_amount.html", item=item,
+                               form=form, warehouse=warehouse, error="")
+
+    warehouse = Warehouse.query.get(warehouse_id)
+    item = Item.query.get(item_id)
+    warehouse_item = Warehouse_item.query.filter_by(item_id=item_id,
+                                                    warehouse_id=warehouse_id).first()
+    form = AmountForm(request.form)
+
+    if not form.validate():
+        return render_template("warehouses/edit_amount.html", item=item,
+                               form=form, warehouse=warehouse, error="")
+
+    amount = form.amount.data
+    difference = amount - warehouse_item.amount
+
+    if not warehouse.fits(warehouse_id, difference):
+        return render_template("warehouses/edit_amount.html", item=item,
+                               form=form, warehouse=warehouse, error="Warehouse full")
+
+    warehouse_item.amount = warehouse_item.amount + difference
+    db.session().commit()
+
+    return redirect(url_for("warehouse_single", warehouse_id=warehouse_id))

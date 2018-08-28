@@ -32,17 +32,7 @@ def items_search():
     
     item = Item.query.filter_by(name=form.name.data).first()
 
-    stmt = text("SELECT DISTINCT warehouse.id "
-                "FROM warehouse, warehouse_item "
-                "WHERE warehouse.id = warehouse_item.warehouse_id "
-                "AND warehouse_item.item_id = :it ;").params(it=item.id)
-    res = db.engine.execute(stmt)
-
-    warehouses = []
-
-    for row in res:
-        a = Warehouse.query.get(row[0])
-        warehouses.append(a)
+    warehouses = Warehouse.find_warehouses_with_item(item.id)
 
     return render_template("items/list.html", items=Item.query.all(),
                     form=SearchForm(), warehouses=warehouses)
@@ -71,15 +61,28 @@ def items_create():
     comp = Warehouse_item.query.filter_by(item_id=item.id, warehouse_id=warehouse.id).first()
 
     if comp:
-        if (comp.amount + form.amount.data) < 2147483648 and (comp.amount + form.amount.data) > -1:
-            comp.amount = comp.amount + form.amount.data
-            db.session().add(comp)
-            db.session().commit()
-    else:
-        relation = Warehouse_item(warehouse, item, form.amount.data)
-        db.session().add(relation)
-        db.session().commit()
 
+        new_amount = form.amount.data + comp.amount
+        new_volume = new_amount * item.volume
+
+        if not warehouse.fits(warehouse.id, new_volume):
+            return render_template("items/new.html", form=form, warehouse_error="No room in warehouse.")
+        elif (comp.amount + form.amount.data) < 0:
+            return render_template("items/new.html", form=form, warehouse_error="Total amount can't be negative")
+        comp.amount = new_amount
+
+    else:
+
+        new_amount = form.amount.data
+        new_volume = new_amount * item.volume
+
+        if not warehouse.fits(warehouse.id, new_volume):
+            return render_template("items/new.html", form=form, warehouse_error="No room in warehouse.")
+        
+        relation = Warehouse_item(warehouse, item, new_amount)
+        db.session().add(relation)
+    
+    db.session().commit()
     return redirect(url_for("warehouse_single", warehouse_id=warehouse.id))
 
 

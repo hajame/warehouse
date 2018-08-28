@@ -14,7 +14,7 @@
   </tr>
   <tr>
     <td>{{ warehouse.name }}</td>
-    <td>{{ warehouse.volume }}</td>
+    <td>{{ warehouse.filled_volume(warehouse.id) }} / {{ warehouse.volume }}</td>
     <td style="width: 10mm">
       <form method="GET" action="{{ url_for('warehouses_edit', warehouse_id=warehouse.id) }}">
         <input type="submit" class="btn btn-primary" value=" edit " />

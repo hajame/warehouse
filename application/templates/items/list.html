@@ -56,14 +56,16 @@
       <thead class="thead-light">
         <th>Warehouse</th>
         <th></th>
+        <th></th>
       </thead>
     </tr>
     {% for warehouse in warehouses %}
     <tr>
       <td>{{ warehouse.name }}</td>
+      <td>{{ warehouse.amount }}</td>
       <td>
         <form method="GET" action="{{ url_for('warehouse_single', warehouse_id=warehouse.id) }}">
-          <input type="submit" class="btn btn-secondary" value="view" />
+          <input type="submit" class="btn btn-secondary btn-sm" value="view" />
         </form>
       </td>
     </tr>

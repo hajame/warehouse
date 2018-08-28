@@ -28,19 +28,28 @@ class Warehouse(db.Model):
         self.volume = volume
 
     @staticmethod
-    def fits(id, amount):
+    def filled_volume(id):
 
         stmt = text("SELECT SUM(warehouse_item.amount * item.volume) "
                     "FROM warehouse_item, item WHERE warehouse_id = :param "
-                    "AND warehouse_item.item_id = item.id;").params(param = id)
+                    "AND warehouse_item.item_id = item.id;").params(param=id)
         res = db.engine.execute(stmt)
-        warehouse_status = res.fetchone()[0]
+        warehouse_volume = res.fetchone()[0]
 
+        if not warehouse_volume:
+            return 0
+
+        return warehouse_volume
+
+    @staticmethod
+    def fits(id, amount):
+
+        warehouse_status = Warehouse.filled_volume(id)
         if warehouse_status + amount < 0:
             return False
-            
+
         stmt = text("SELECT volume from warehouse "
-                    "WHERE warehouse.id = :param ;").params(param = id)
+                    "WHERE warehouse.id = :param ;").params(param=id)
         res = db.engine.execute(stmt)
         volume = res.fetchone()[0]
 
@@ -50,16 +59,17 @@ class Warehouse(db.Model):
         return True
 
     @staticmethod
-    def find_warehouses_with_item(item):
-        stmt = text("SELECT DISTINCT warehouse.name "
-                    "FROM warehouse, item, warehouse_item "
-                    "WHERE item.name LIKE '% :it %' "
-                    "AND item_id = warehouse_id AND warehouse_id = warehouse.id").params(it=item)
+    def find_warehouses_with_item(id):
+        stmt = text("SELECT DISTINCT warehouse.id, warehouse.name, warehouse_item.amount "
+                    "FROM warehouse, item, warehouse_item WHERE item.id = :param "
+                    "AND item.id = warehouse_item.item_id "
+                    "AND warehouse_item.warehouse_id = warehouse.id "
+                    "ORDER BY warehouse_item.amount DESC ;").params(param=id)
         res = db.engine.execute(stmt)
 
         response = []
         for row in res:
-            response.append({"name": row[0]})
+            response.append({"id": row[0], "name": row[1], "amount": row[2]})
 
         return response
 

@@ -99,7 +99,7 @@ def items_take_one(item_id, warehouse_id):
         item_id=item_id, warehouse_id=warehouse_id).first()
     if t.amount > 0:
         t.amount = t.amount - 1
-    db.session().commit()
+        db.session().commit()
 
     return redirect(url_for("warehouse_single", warehouse_id=warehouse_id))
 
@@ -108,11 +108,15 @@ def items_take_one(item_id, warehouse_id):
 @login_required()
 def items_add_one(item_id, warehouse_id):
 
-    t = Warehouse_item.query.filter_by(
-        item_id=item_id, warehouse_id=warehouse_id).first()
-    if t.amount < 2147483647:
-        t.amount = t.amount + 1
-    db.session().commit()
+    warehouse = Warehouse.query.get(warehouse_id)
+    item = Item.query.get(item_id)
+    warehouse_item = Warehouse_item.query.filter_by(item_id=item_id,
+                                                    warehouse_id=warehouse_id).first()
+    difference = item.volume
+    
+    if warehouse.fits(warehouse_id, difference):
+        warehouse_item.amount = warehouse_item.amount + 1
+        db.session().commit()
 
     return redirect(url_for("warehouse_single", warehouse_id=warehouse_id))
 
@@ -154,8 +158,9 @@ def amount_edit(item_id, warehouse_id):
 
     amount = form.amount.data
     difference = amount - warehouse_item.amount
+    difference_volume = difference * item.volume
 
-    if not warehouse.fits(warehouse_id, difference):
+    if not warehouse.fits(warehouse_id, difference_volume):
         return render_template("warehouses/edit_amount.html", item=item,
                                form=form, warehouse=warehouse, error="Warehouse full")
 

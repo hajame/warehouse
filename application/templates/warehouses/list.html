@@ -14,7 +14,7 @@
     {% for warehouse in warehouses %}
     <tr>
       <td>{{ warehouse.name }}</td>
-      <td style="width: 40mm">{{ warehouse.volume }}</td>
+      <td style="width: 40mm">{{ warehouse.filled_volume(warehouse.id) }} / {{ warehouse.volume }}</td>
       <td style="width: 20mm">
           <form method="GET" action="{{ url_for('warehouse_single', warehouse_id=warehouse.id) }}">
               <input type="submit" class="btn btn-primary" value=" view "/>

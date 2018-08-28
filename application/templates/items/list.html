@@ -5,13 +5,10 @@
 <h4 style="padding-top: 2mm; padding-bottom: 2mm">Search for warehouses containing item:</h4>
 
 <form id="item_search" method="POST" action="{{ url_for('items_search') }}">
-  <table>
+  <table class="table" style="width: 70%">
     <tr>
       <td style="padding-right: 1cm">
-        {{ form.name.label }}
-      </td>
-      <td>
-        {{ form.name }} <input form="item_search" type="submit" class="btn btn-primary" value=" search " />
+        {{ form.name.label }} {{ form.name }} <input form="item_search" type="submit" class="btn btn-primary" value=" search " />
       </td>
     </tr>
     <tr>
@@ -24,11 +21,11 @@
       </td>
     </tr>
   </table>
-  <table class="table" style="width: 60%">
+  <table class="table" style="width: 50%">
     <tr>
       <thead class="thead-light">
         <th>Warehouse</th>
-        <th></th>
+        <th>Amount</th>
         <th></th>
       </thead>
     </tr>

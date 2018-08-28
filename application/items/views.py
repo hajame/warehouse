@@ -28,7 +28,7 @@ def items_search():
     form = SearchForm(request.form)
 
     if not form.validate():
-        return render_template("items/list.html", form=form)
+        return render_template("items/list.html", form=form, items=Item.query.all(), warehouses=[])
     
     item = Item.query.filter_by(name=form.name.data).first()
 

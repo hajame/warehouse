@@ -27,9 +27,9 @@ class Warehouse(db.Model):
         self.name = name
         self.volume = volume
 
+    # How much of warehouse volume is occupied
     @staticmethod
     def filled_volume(id):
-
         stmt = text("SELECT SUM(warehouse_item.amount * item.volume) "
                     "FROM warehouse_item, item WHERE warehouse_id = :param "
                     "AND warehouse_item.item_id = item.id;").params(param=id)
@@ -40,6 +40,7 @@ class Warehouse(db.Model):
             return 0
 
         return warehouse_volume
+
 
     @staticmethod
     def fits(id, amount):
@@ -58,6 +59,7 @@ class Warehouse(db.Model):
 
         return True
 
+
     @staticmethod
     def find_warehouses_with_item(id):
         stmt = text("SELECT DISTINCT warehouse.id, warehouse.name, warehouse_item.amount "
@@ -72,6 +74,7 @@ class Warehouse(db.Model):
             response.append({"id": row[0], "name": row[1], "amount": row[2]})
 
         return response
+
 
     @staticmethod
     def count_warehouses():

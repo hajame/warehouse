@@ -11,7 +11,6 @@ else:
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///warehouses.db"    
     app.config["SQLALCHEMY_ECHO"] = True
 
-# Luodaan db-olio, jota käytetään tietokannan käsittelyyn
 db = SQLAlchemy(app)
 
 from os import urandom
@@ -23,7 +22,6 @@ login_manager.init_app(app)
 
 login_manager.login_view = "auth_login"
 login_manager.login_message = "Please login to use this functionality."
-
 
 # roles in login_required
 from functools import wraps
@@ -52,10 +50,7 @@ def login_required(role="ANY"):
         return decorated_view
     return wrapper
 
-
-# Luetaan kansiosta application tiedoston views sisältö
 from application import views
-
 from application.items import models
 from application.items import views
 
@@ -72,10 +67,12 @@ from application.auth.models import User, Role
 def load_user(user_id):
     return User.query.get(user_id)
 
-# Luodaan lopulta tarvittavat tietokantataulut
+# create tables
 try: 
     db.create_all()
 
+
+    # create user roles
     from application.auth.models import Role
     
     role = Role.query.filter_by(name='USER').first()

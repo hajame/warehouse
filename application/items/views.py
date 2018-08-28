@@ -60,6 +60,8 @@ def items_create():
 
     comp = Warehouse_item.query.filter_by(item_id=item.id, warehouse_id=warehouse.id).first()
 
+    # check if item exists in warehouse
+
     if comp:
 
         new_amount = form.amount.data + comp.amount
@@ -69,6 +71,7 @@ def items_create():
             return render_template("items/new.html", form=form, warehouse_error="No room in warehouse.")
         elif (comp.amount + form.amount.data) < 0:
             return render_template("items/new.html", form=form, warehouse_error="Total amount can't be negative")
+        
         comp.amount = new_amount
 
     else:

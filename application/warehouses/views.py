@@ -156,6 +156,8 @@ def amount_edit(item_id, warehouse_id):
         return render_template("warehouses/edit_amount.html", item=item,
                                form=form, warehouse=warehouse, error="")
 
+    # Adds only if warehouse can fit the difference between the old and new amounts
+
     amount = form.amount.data
     difference = amount - warehouse_item.amount
     difference_volume = difference * item.volume

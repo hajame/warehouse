@@ -8,10 +8,6 @@ from application.items.models import Item
 def index():
     return render_template("index.html", warehouse_count=Warehouse.count_warehouses(), item_count=Item.count_items())
 
-@app.route("/warehouse")
-def content():
-    return render_template("warehouse.html", name=name, info=info)
-
 if __name__ == "__main__":
     app.run(debug=True)
     

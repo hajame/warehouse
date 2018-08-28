@@ -1,35 +1,8 @@
 {% extends "layout.html" %} {% block body %}
+
 <h1>List of all items</h1>
 
-<table class="table table-sm table-hover table-striped" style="width: 50%">
-  <thead class="thead-light">
-    <tr>
-      <th>Item</th>
-      <th>Volume</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  {% for item in items %}
-  <tr>
-    <td style="width: 60mm">{{ item.name }}</td>
-    <td style="width: 30mm">{{ item.volume }}</td>
-
-    <td style="width: 10mm">
-      <form method="GET" action="{{ url_for('items_edit', item_id = item.id) }}">
-        <input type="submit" class="btn btn-secondary btn-sm" value="edit" />
-      </form>
-    </td>
-    <td style="width: 10mm">
-      <form method="GET" action="{{ url_for('items_delete', item_id=item.id) }}">
-        <input type="submit" class="btn btn-danger btn-sm" value="delete" />
-      </form>
-    </td>
-  </tr>
-  {% endfor %}
-</table>
-
-<h4 style="padding-bottom: 1mm">Search for warehouses containing item:</h4>
+<h4 style="padding-top: 2mm; padding-bottom: 2mm">Search for warehouses containing item:</h4>
 
 <form method="POST" action="{{ url_for('items_search') }}">
   <table>
@@ -72,5 +45,36 @@
     {% endfor %}
   </table>
 </form>
+
+<h4 style="padding-top: 2mm; padding-bottom: 2mm">Item inventory</h4>
+
+<table class="table table-sm table-hover table-striped" style="width: 50%">
+  <thead class="thead-light">
+    <tr>
+      <th>Item</th>
+      <th>Volume</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  {% for item in items %}
+  <tr>
+    <td style="width: 60mm">{{ item.name }}</td>
+    <td style="width: 30mm">{{ item.volume }}</td>
+
+    <td style="width: 10mm">
+      <form method="GET" action="{{ url_for('items_edit', item_id = item.id) }}">
+        <input type="submit" class="btn btn-secondary btn-sm" value="edit" />
+      </form>
+    </td>
+    <td style="width: 10mm">
+      <form method="GET" action="{{ url_for('items_delete', item_id=item.id) }}">
+        <input type="submit" class="btn btn-danger btn-sm" value="delete" />
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
 
 {% endblock %}

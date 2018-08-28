@@ -4,14 +4,14 @@
 
 <h4 style="padding-top: 2mm; padding-bottom: 2mm">Search for warehouses containing item:</h4>
 
-<form method="POST" action="{{ url_for('items_search') }}">
+<form id="item_search" method="POST" action="{{ url_for('items_search') }}">
   <table>
     <tr>
       <td style="padding-right: 1cm">
         {{ form.name.label }}
       </td>
       <td>
-        {{ form.name }} <input type="submit" class="btn btn-primary" value=" search " />
+        {{ form.name }} <input form="item_search" type="submit" class="btn btn-primary" value=" search " />
       </td>
     </tr>
     <tr>
@@ -37,8 +37,8 @@
       <td>{{ warehouse.name }}</td>
       <td>{{ warehouse.amount }}</td>
       <td>
-        <form method="GET" action="{{ url_for('warehouse_single', warehouse_id=warehouse.id) }}">
-          <input type="submit" class="btn btn-secondary btn-sm" value="view" />
+        <form id="{{ warehouse.name }}" method="GET" action="{{ url_for('warehouse_single', warehouse_id=warehouse.id) }}">
+          <input form="{{ warehouse.name }}" type="submit" class="btn btn-secondary btn-sm" value="view" />
         </form>
       </td>
     </tr>

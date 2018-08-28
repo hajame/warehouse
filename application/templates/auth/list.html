@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1>Users</h1>
+
+  <table class="table table-sm table-hover" style="width: 50%">
+    <tr>
+      <thead class="thead-light">
+        <th>User</th>
+        <th>Username</th>
+        <th></th>
+        <th></th>
+      </thead>
+    </tr>
+    {% for user in users %}
+    <tr>
+      <td>{{ user.name }}</td>
+      <td>{{ user.username }}</td>
+
+      <td style="width: 20mm">
+          <form method="GET" action="{{ url_for('user_edit', user_id=user.id) }}">
+              <input type="submit" class="btn btn-primary btn-sm" value="edit"/>
+          </form>
+      </td>
+      <td style="width: 10mm">
+          <form method="GET" action="{{ url_for('user_delete', user_id=user.id) }}">
+            <input type="submit" class="btn btn-danger btn-sm" value="delete" />
+          </form>
+        </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

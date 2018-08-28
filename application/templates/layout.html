@@ -39,6 +39,7 @@
         
           {% if current_user.role.name == 'ADMIN' %}        
         <a class="nav-link" style="color: #ffffff" href="{{ url_for('warehouses_all') }}">All warehouses</a>         
+        <a class="nav-link" style="color: #ffffff" href="{{ url_for('users_all') }}">Users</a>         
           {% endif %}  
 
         <a class="nav-link"style="color: rgb(255, 255, 255,.5)">Logged in as {{ current_user.name }}</a>

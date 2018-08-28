@@ -11,7 +11,7 @@ class User(Base):
     password = db.Column(db.String(32), nullable=False)
 
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=True)
-    role = db.relationship("Role")
+    role = db.relationship("Role", cascade='delete')
 
     def __init__(self, name, username, password):
         self.name = name

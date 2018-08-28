@@ -1,7 +1,7 @@
 {% extends "layout.html" %} {% block body %}
-<h1>Register</h1>
+<h1>Edit user</h1>
 
-<form method="POST" action="{{ url_for('auth_register') }}">
+<form method="POST" action="{{ url_for('user_edit', user_id=user_id) }}">
   <table style="width:100%">
     <tr>
       <td>
@@ -57,7 +57,7 @@
       </td>  
     </tr>
   </table>
-  <input type="submit" class="btn btn-primary" value="Register" />
+  <input type="submit" class="btn btn-primary" value="OK" />
 </form>
 
 {% endblock %}

@@ -97,6 +97,11 @@ Valitse __Users__ listataksesi kaikki käyttäjät.
 
 ![listaa käyttäjät](https://github.com/hajame/warehouse/blob/master/documentation/images/users.png)  
 
+- __edit__: Vaihda käyttäjän nimi, tunnus tai salasana
+- __add rights__: anna käyttäjälle oikeudet muokata valitsemaasi varastoa
+- __delete__: poistaa käyttäjän. _HUOM_ myös kaikki hänen yksin hallinnoimansa varastot poistetaan
+    - mikäli haluat, että varastot säilytetään, anna ensin toiselle käyttäjälle oikeudet hallita näitä varastoja.
+
 ## Uloskirjautuminen
 
 Voit kirjautua ulos koska vaan valitsemalla __Log out__-linkin.

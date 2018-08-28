@@ -36,6 +36,7 @@ Etusivulle pääsee palaamaan muista sovelluksen näkymisetä klikkaamalla navig
 
 - __varastojen tarkastelu__
     - __Warehouses__ linkistä näet ne varastot, joihin käyttäjälläsi on käyttöoikeudet.
+    - Näet varastojen tämänhetkisen täyttötilanteen
     - valitse __view__ tarkastellaksesi varaston _tietoja ja tuotteita_.  
 
 - __varaston muokkaaminen__
@@ -82,12 +83,19 @@ On suositeltavaa lisätä eri kokoisten pakkausten pakkauskoot suoraan tuotteen 
 Sivu listaa jokaisen järjestelmään lisätyn tuotteen ja sen tilavuuden.  
 
 - Selvitä, missä varastoissa on tiettyä tuotetta kirjoittamalla tuotteen nimi __Name__ kenttään ja valitse __search__.
+    - Varastot listataan varastotilanteen mukaan suuruusjärjestyksessä.
 
 ## Järjestelmänvalvojan (admin) työkalut
 
 ### All warehouses - listaa kaikki varastot
 
 Järjestelmänvalvojalla on oikeus tarkastella ja muokata kaikkia varastoja. Valitse navigaatiopalkista __All warehouses__ listataksesi kaikki varastot. Näkymää käytetään [Warehouses](https://github.com/hajame/warehouse/blob/master/documentation/user_guide.md#warehouses) -näkymän tavoin.
+
+### Users - käyttäjien muokkaaminen
+
+Valitse __Users__ listataksesi kaikki käyttäjät.
+
+![listaa käyttäjät](https://github.com/hajame/warehouse/blob/master/documentation/images/users.png)  
 
 ## Uloskirjautuminen
 

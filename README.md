@@ -40,13 +40,16 @@ __Sovellus: https://tsoha-warehouse.herokuapp.com/__
 	- Listataan vain ne varastot joihin käyttäjällä on oikeus.
 - Listaus varaston tuotteista.
 	- Mahdollisuus poistaa koko tuotenimi varastosta tai muokata tuotteen määrää varastossa. 
-- Missä varastossa on kyseistä tuotetta- `yhteenvetokysely`
-- Varaston lisääminen, poistaminen ja päivittäminen. 
+- Varastotilanteen tarkastelu
+	- Missä varastossa on kyseistä tuotetta. `yhteenvetokysely`
+	- Missä varastossa on eniten/vähiten tuotetta. `yhteenvetokysely`
+- Varaston lisääminen, poistaminen ja päivittäminen.
+- Tuotteen lisääminen, poistaminen ja päivittäminen.
 - Jos jokin tuote vie enemmän tilaa kuin varastossa on kapasiteettia jäljellä, ei tuotetta lisätä. 
 - Saman tuottenimen lisääminen kahdesti lisää tuotteen määrää. 
+- Varaston käyttäjäoikeuksien myöntäminen.
 
 ### Toteutumattomat ominaisuudet
 
-- Missä varastossa on eniten/vähiten tuotetta. `yhteenvetokysely` `ei toteutettu`
-- Tuotteen lisääminen, poistaminen ja päivittäminen. `toteutettu osin`
-- Varaston käyttäjäoikeuksien myöntäminen. `ainoastaan varastoa luotaessa`
+- Pääkäyttäjäoikeuden myöntäminen
+

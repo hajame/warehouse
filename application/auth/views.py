@@ -2,8 +2,9 @@ from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user, current_user
 
 from application import app, db, login_required, login_manager
+from application.warehouses.models import Warehouse
 from application.auth.models import User, Role
-from application.auth.forms import LoginForm, UserForm
+from application.auth.forms import LoginForm, UserForm, RightsForm
 
 
 
@@ -51,12 +52,9 @@ def auth_register():
 @app.route("/auth/edit_user/<user_id>", methods=["GET", "POST"])
 @login_required(role="ADMIN")
 def user_edit(user_id):
-
     if request.method == "GET":
-
         user = User.query.get(user_id)
-        form = UserForm(name=user.name, username=user.username,
-                        password=user.password, confirm=user.password)
+        form = UserForm(obj=user)
 
         return render_template("auth/edit_user.html", form=form, user_id=user_id)
 
@@ -71,6 +69,31 @@ def user_edit(user_id):
     user.password = form.password.data
     
 
+    db.session().commit()
+
+    return redirect(url_for("users_all"))
+
+@app.route("/auth/add_rights/<user_id>", methods=["GET", "POST"])
+@login_required(role="ADMIN")
+def add_rights(user_id):
+
+    if request.method == "GET":
+        user = User.query.get(user_id)
+        form = RightsForm()
+        return render_template("auth/add_rights.html", form=form, user=user, warehouse_error="")
+
+    form = RightsForm(request.form)
+    user = User.query.get(user_id)
+
+    if not form.validate():
+        return render_template("auth/add_rights.html", form=form, user=user, warehouse_error="")
+
+    warehouse = Warehouse.query.filter_by(name=form.warehouse.data).first()
+
+    if not warehouse:
+        return render_template("auth/add_rights.html", form=form, user=user, warehouse_error="No such warehouse.")
+
+    warehouse.users.append(user)
     db.session().commit()
 
     return redirect(url_for("users_all"))

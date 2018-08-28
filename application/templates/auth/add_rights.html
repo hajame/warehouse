@@ -1,0 +1,41 @@
+{% extends "layout.html" %} {% block body %}
+<h1>Add rights</h1>
+
+
+<h2 style="padding-top: 4mm">Warehouse rights</h3>
+
+<form method="POST" action="{{ url_for('add_rights', user_id=user.id) }}">
+    <table class="table table-hover" style="width:80%">
+    <tr>
+        <td>User</td>  
+        <td><b>{{ user.name }}</b></td> 
+        <td></td>
+    </tr>
+    <tr>
+        <td>Username</td>  
+        <td><b>{{ user.username }}</b></td> 
+        <td></td>
+    </tr>
+    <tr>
+       
+      <td>
+        {{ form.warehouse.label }}
+      </td>
+      <td style="width: 100mm">
+        {{ form.warehouse }} <input type="submit" class="btn btn-primary btn-sm" value="OK" />
+      </td>
+      <td>
+          <ul>
+            {% for error in form.warehouse.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+            {% if warehouse_error %}
+            <li>{{ warehouse_error }}</li>
+            {% endif %}
+          </ul>
+        </td>      
+    </tr>
+  </table>
+</form>
+
+{% endblock %}

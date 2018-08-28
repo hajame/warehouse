@@ -17,3 +17,9 @@ class UserForm(FlaskForm):
 
     class Meta:
         csrf = False
+
+class RightsForm(FlaskForm):
+    warehouse = StringField("Warehouse", [validators.Length(min=2, max=128, message="Must be within 2-128 characters.")])
+
+    class Meta:
+        csrf = False

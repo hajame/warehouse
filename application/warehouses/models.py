@@ -30,8 +30,9 @@ class Warehouse(db.Model):
     @staticmethod
     def fits(id, amount):
 
-        stmt = text("SELECT SUM(amount) from warehouse_item "
-                    "WHERE warehouse_id = :param ;").params(param = id)
+        stmt = text("SELECT SUM(warehouse_item.amount * item.volume) "
+                    "FROM warehouse_item, item WHERE warehouse_id = :param "
+                    "AND warehouse_item.item_id = item.id;").params(param = id)
         res = db.engine.execute(stmt)
         warehouse_status = res.fetchone()[0]
 

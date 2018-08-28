@@ -1,25 +1,22 @@
 # Warehouse
 
-Tietokantasovellus-harjoitustyö 2018-kesä-2. 
+#### Tietokantasovellus-harjoitustyö 2018-kesä-2
 
-Aihe: Varastonhallinta.  
-
-
-## Varastonhallintasovellus
+### Aihe: varastonhallinta
 
 Aiheeni on varastonhallintasovellus, jonka avulla käyttäjä voi tarkastella eri varastojen tilannetta.  
 
-Käyttäjälle annetaan listaus hänen hallinnoimistaan  varastoista. Käyttäjä voi tarkastella varastojen sisältöä ja hakea tuotteita varastoista tuotteen nimellä. Ylläpitäjän oikeuksilla käyttäjä voi antaa toisille käyttäjille oikeuksia tarkastella ja muokata eri varastoja ja niiden sisältöä.  
+Käyttäjälle annetaan listaus hänen hallinnoimistaan  varastoista. Käyttäjä voi tarkastella varastojen sisältöä, täyttötilannetta ja etsiä tuotteita varastoista tuotteen nimellä. Haun tuloksena käyttäjä näkee, missä varastossa tuotetta on paljon ja missä vähän. Ylläpitäjän oikeuksilla käyttäjä voi antaa toisille käyttäjille oikeuksia tarkastella ja muokata eri varastoja ja niiden sisältöä.  
 
 
 __Sovellus: https://tsoha-warehouse.herokuapp.com/__
 
 ### Testikäyttäjätunnukset 
 
-|	   |   admin	   |	 test      |	    hello |
-|----------|-------|-----------|-------------|
-| __PASSWORD__ | pass  | pass      | world       |
-| __ROLE__     | ADMIN | USER      | USER        |
+|	       |   admin       |   test        |   hello      |
+|--------------|---------------|---------------|--------------|
+| __PASSWORD__ | pass 	       | pass          | world        |
+| __ROLE__     | ADMIN 	       | USER          | USER         |
 
 
 ## Dokumentaatio
@@ -47,10 +44,10 @@ __Sovellus: https://tsoha-warehouse.herokuapp.com/__
 - Varaston lisääminen, poistaminen ja päivittäminen.
 - Tuotteen lisääminen, poistaminen ja päivittäminen.
 - Jos jokin tuote vie enemmän tilaa kuin varastossa on kapasiteettia jäljellä, ei tuotetta lisätä. 
-- Saman tuottenimen lisääminen kahdesti lisää tuotteen määrää. 
+- Saman tuotenimen lisääminen kahdesti lisää tuotteen määrää. 
 - Varaston käyttäjäoikeuksien myöntäminen.
 
 ### Toteutumattomat ominaisuudet
 
-- Pääkäyttäjäoikeuden myöntäminen
+- Pääkäyttäjäoikeuden myöntäminen.
 

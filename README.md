@@ -29,6 +29,7 @@ __Sovellus: https://tsoha-warehouse.herokuapp.com/__
 - [Käyttöohje](https://github.com/hajame/warehouse/blob/master/documentation/user_guide.md)  
 - [Asennusohje](https://github.com/hajame/warehouse/blob/master/documentation/installation_guide.md)
 - [Omat kokemukset](https://github.com/hajame/warehouse/blob/master/documentation/reflection_of_experiences.md)
+- [SQL-CREATE TABLE -lauseet](https://github.com/hajame/warehouse/blob/master/documentation/SQL_CREATE_TABLE.md)
 
 
 ## Toteutuneet ja toteutumattomat ominaisuudet

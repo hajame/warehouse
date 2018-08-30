@@ -99,8 +99,8 @@ Valitse __Users__ listataksesi kaikki käyttäjät.
 
 - __edit__: Vaihda käyttäjän nimi, tunnus tai salasana
 - __add rights__: anna käyttäjälle oikeudet muokata valitsemaasi varastoa
-- __delete__: poistaa käyttäjän. _HUOM_ myös kaikki hänen yksin hallinnoimansa varastot poistetaan
-    - mikäli haluat, että varastot säilytetään, anna ensin toiselle käyttäjälle oikeudet hallita näitä varastoja.
+- __delete__: poistaa käyttäjän. Poistetun käyttäjän hallinnoimiin varastoihin ei kosketa.
+    - voit antaa toiselle käyttäjälle oikeudet hallita näitä varastoja tai poistaa ne.
 
 ## Uloskirjautuminen
 

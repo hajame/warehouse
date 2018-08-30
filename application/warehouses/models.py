@@ -18,7 +18,7 @@ class Warehouse(db.Model):
     volume = db.Column(db.Integer)
 
     users = db.relationship('User', secondary=users, lazy='subquery', 
-                                    backref=db.backref('warehouses', lazy=True, cascade='delete'))
+                                    backref=db.backref('warehouses', lazy=True))
 
     warehouse_items = db.relationship(
         'Warehouse_item', cascade='delete', lazy=True)

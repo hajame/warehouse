@@ -18,9 +18,10 @@ Alla on kuvattuna varastonhallintasovellukselle olennaisia käyttäjätarinoita.
             > Tarkistetaan, paljonko varastossa on tilaa (kohta 2.) ja verrataan lisättävää tuotemäärää varaston tilavuuteen.  
             `SELECT volume FROM warehouse WHERE warehouse.id =  '1' ;`
     - Voin myös poistaa kaikki samaa nimeä edustavat tuotteet varastosta. `valmis`
+        > `DELETE FROM warehouse_item WHERE warehouse_id = 1 AND item_id = (SELECT id FROM item where name = 'Bar');`
 3. Haluan luoda uusia varastoja. `valmis`
     - Haluan muokata omien varastojeni tietoja: nimeä ja kapasiteettia. `valmis`
-            > `UPDATE warehouse SET name = 'Foo' WHERE id = 1;`
+        > `UPDATE warehouse SET name = 'Foo' WHERE id = 1;`
 4. Haluan saada tiedon tietyn tuotteen varastotilanteesta. `valmis`
     - Haluan listan varastoista, joissa kyseistä tuotetta on, ja tuotteen kappalemäärät. `valmis`
     - Haluan tietää, missä varastossa on eniten kyseistä tuotetta. `valmis`

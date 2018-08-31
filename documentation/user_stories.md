@@ -9,7 +9,7 @@ Alla on kuvattuna varastonhallintasovellukselle olennaisia käyttäjätarinoita.
     > `SELECT COUNT(item.id) FROM item`
 1. Haluan tarkastella varastojen sisältöä ja kappalemääriä. `valmis`
     - Näen myös paljonko missäkin varastossa on tilaa jäljellä. `valmis`
-        > `SELECT SUM(warehouse_item.amount * item.volume) FROM warehouse_item, item WHERE warehouse_id = '1' AND warehouse_item.item_id = item.id;)`
+        > `SELECT SUM(warehouse_item.amount * item.volume) FROM warehouse_item, item WHERE warehouse_id = '1' AND warehouse_item.item_id = item.id;`
 2. Voin lisätä tai poistaa tuotteita varastosta nopeasti. `valmis`
     - Voin kirjoittaa uuden kappalemäärän, joka korvaa edellisen `valmis`
         > `UPDATE warehouse_item SET amount = 200 WHERE warehouse_id = 1 AND item_id = 2;`

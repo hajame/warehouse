@@ -29,7 +29,7 @@ __Sovellus: https://tsoha-warehouse.herokuapp.com/__
 - [SQL-CREATE TABLE -lauseet](https://github.com/hajame/warehouse/blob/master/documentation/SQL_CREATE_TABLE.md)
 
 
-## Toteutuneet ja toteutumattomat ominaisuudet
+## Ominaisuudet
 
 ### Toteutuneet ominaisuudet
 

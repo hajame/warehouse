@@ -28,9 +28,10 @@ Erityisen mukavaa oli loppusuoralla hyvin onnistuneet ominaisuudet:
 ### Kömpelyyksiä
 
 
-
-1. _Esineen lisääminen ja varaston käyttöoikeuden lisääminen edellyttää, että käyttäjä muistaa varaston nimen kirjain kirjaimelta._ Tämä ominaisuus korvataan myöhemmin valikolla, jossa on listattuna kaikki sallitut varastot.
-2. _Osoiteriviltä pääsee lukemaan ja muokkaamaan mitä tahansa varastoa._ Myös käyttäjät, joilta muut varastot on piilotettu. Osaavat käyttäjät huomaavat kyllä pian, että osoiteriviltä varasto-id:tä vaihtamalla pääsee pääkäyttäjän tavoin muokkaamaan toisten varastoja.
+1. _Esineen lisääminen ja varaston käyttöoikeuden lisääminen edellyttää, että käyttäjä muistaa varaston nimen kirjain kirjaimelta._ 
+    - Tämä ominaisuus korvataan myöhemmin valikolla, jossa on listattuna kaikki sallitut varastot.
+2. _Osoiteriviltä pääsee lukemaan ja muokkaamaan mitä tahansa varastoa._ 
+    - Myös käyttäjät, joilta muut varastot on piilotettu. Osaavat käyttäjät huomaavat kyllä pian, että osoiteriviltä varasto-id:tä vaihtamalla pääsee pääkäyttäjän tavoin muokkaamaan toisten varastoja.
 
 ### Puutteet 
 
@@ -39,6 +40,12 @@ Kuitenkaan kaikkia ei ehditty toteuttaa kuten suunnteltua. Esimerkiksi pääkäy
 ### Tunnetut bugit
 
 1. _Esinehaussa listatuista varastoista ensimmäisen varaston "view"-linkki ei toimi._ Yritin korjata tätä ongelmaa todella pitkään siinä onnistumatta. Sain vertaisarvioinnissakin vinkkejä ongelmaan (kiitos tästä __anonOstrich__), mutta valitettavasti en saanut tälläkään ohjeella linkkiä toimimaan.
+
+### Oppiminen
+
+Kurssin aikana opettelin Python-kielen miltei tyhjästä ja opin käyttämään SQL-alchemy-kirjastoa ja monia muita Pythonille tehtyjä web-kirjastoja. Tämän lisäksi opin paljon uutta HTML:stä (kuten formsien käytöstä) sekä open sourcen hyödyllisyydestä, esimerkiksi BootStrap-kirjaston suhteen.
+
+Opin myös hakemaan tietoa ja lukemaan dokumentaatiota paremmin kuin ennen.
 
 
 

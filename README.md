@@ -9,7 +9,8 @@ Aiheeni on varastonhallintasovellus, jonka avulla käyttäjä voi tarkastella er
 Käyttäjälle annetaan listaus hänen hallinnoimistaan  varastoista. Käyttäjä voi tarkastella varastojen sisältöä, täyttötilannetta ja etsiä tuotteita varastoista tuotteen nimellä. Haun tuloksena käyttäjä näkee, missä varastossa tuotetta on paljon ja missä vähän. Ylläpitäjän oikeuksilla käyttäjä voi antaa toisille käyttäjille oikeuksia tarkastella ja muokata eri varastoja ja niiden sisältöä.  
 
 
-__Sovellus: https://tsoha-warehouse.herokuapp.com/__
+__Sovellus herokussa:__  
+> https://tsoha-warehouse.herokuapp.com/
 
 ## Testikäyttäjätunnukset 
 

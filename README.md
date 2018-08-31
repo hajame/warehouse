@@ -11,7 +11,7 @@ Käyttäjälle annetaan listaus hänen hallinnoimistaan  varastoista. Käyttäj�
 
 __Sovellus: https://tsoha-warehouse.herokuapp.com/__
 
-### Testikäyttäjätunnukset 
+## Testikäyttäjätunnukset 
 
 |	       |   admin       |   test        |   hello      |
 |--------------|---------------|---------------|--------------|
@@ -33,21 +33,33 @@ __Sovellus: https://tsoha-warehouse.herokuapp.com/__
 
 ### Toteutuneet ominaisuudet
 
-- Kirjautuminen ja uuden käyttäjän luominen.
-- Eri varastojen tilanteen ja tuotteiden tarkastelu.
-	- Listataan vain ne varastot joihin käyttäjällä on oikeus.
-- Listaus varaston tuotteista.
-	- Mahdollisuus poistaa koko tuotenimi varastosta tai muokata tuotteen määrää varastossa. 
-- Varastotilanteen tarkastelu
-	- Missä varastossa on kyseistä tuotetta. `yhteenvetokysely`
-	- Missä varastossa on eniten/vähiten tuotetta. `yhteenvetokysely`
-- Varaston lisääminen, poistaminen ja päivittäminen.
-- Tuotteen lisääminen, poistaminen ja päivittäminen.
-- Jos jokin tuote vie enemmän tilaa kuin varastossa on kapasiteettia jäljellä, ei tuotetta lisätä. 
-- Saman tuotenimen lisääminen kahdesti lisää tuotteen määrää. 
-- Varaston käyttäjäoikeuksien myöntäminen.
+_Warehouse_ (CRUD)
+- Varastojen listaaminen, lisääminen, poistaminen ja päivittäminen
+- Saman tuotenimen lisääminen kahdesti lisää tuotteen määrää, ei uutta tuotetta
+	- __Jos jokin tuote vie enemmän tilaa kuin varastossa on kapasiteettia__ jäljellä, ei tuotetta lisätä. `yhteenvetokysely`
+- Eri varastojen tilanteen ja tuotteiden tarkastelu
+	- Listaus varaston tuotteista
+	- Listataan vain ne varastot joihin käyttäjällä on oikeus
+	
+	
+_Item_ (CRUD)
+- Tuotteiden listaaminen, lisääminen, poistaminen ja päivittäminen.
+- Mahdollisuus poistaa koko tuotenimi varastosta tai muokata tuotteen määrää varastossa
+- Tuotteen varastotilanteen tarkastelu
+	- __Varastohaku tuotteen nimellä__: Missä varastossa on kyseistä tuotetta. `yhteenvetokysely`
+	- __Missä varastossa on eniten/vähiten tuotetta__ `yhteenvetokysely`
+	
 
-### Toteutumattomat ominaisuudet
+_User_ (CRUD)
+- Kirjautuminen ja uuden käyttäjän luominen
+- Käyttäjän tietojen lukeminen, päivittäminen ja käyttäjän poistaminen `vain admin`
+	- Käyttäjän poistaminen ei poista hänen hallitsemiaan varastoja
+- Varaston käyttäjäoikeuksien myöntäminen
+
+### Toteutumattomat ominaisuudet / Kehitysideat
 
 - Pääkäyttäjäoikeuden myöntäminen.
-
+- Käyttäjän haku nimellä
+- Varaston haku nimellä
+- Tuotehakuun haku nimen osalla ja välinpitämättömyys kirjainkoosta
+- Sivutus tuotteiden, varastojen ja käyttäjien listauksessa
